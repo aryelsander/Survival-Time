@@ -1,0 +1,56 @@
+[gd_scene load_steps=10 format=3 uid="uid://baffyvu8l15kj"]
+
+[ext_resource type="Script" uid="uid://dajhau3ak3yrs" path="res://Scenes/Stage/GameScene.gd" id="1_sv04b"]
+[ext_resource type="PackedScene" uid="uid://cyu7mqfll4rh7" path="res://Scenes/Player/player.tscn" id="2_25205"]
+[ext_resource type="PackedScene" uid="uid://kk15sx7k0m2t" path="res://Scenes/Stage/spawn_manager.tscn" id="2_rlq2x"]
+[ext_resource type="PackedScene" uid="uid://dat6ogkwso05j" path="res://Scenes/Enemy/Follower Enemy/follower_enemy.tscn" id="3_14wpr"]
+[ext_resource type="PackedScene" uid="uid://cn4piaorowspf" path="res://Scenes/Enemy/SprinterEnemy/sprinter_enemy.tscn" id="4_jii22"]
+[ext_resource type="Environment" uid="uid://b4now75hmvnx6" path="res://Resources/Environment/game_scene.tres" id="4_rlq2x"]
+[ext_resource type="PackedScene" uid="uid://b7bb8fobrpse8" path="res://Scenes/Enemy/Tank Enemy/tank_enemy.tscn" id="5_rlq2x"]
+[ext_resource type="PackedScene" uid="uid://1ul327s6rguk" path="res://Scenes/Enemy/Shooter Enemy/shooter_enemy.tscn" id="6_25205"]
+[ext_resource type="PackedScene" uid="uid://dsjv2i0olwynk" path="res://Scenes/Enemy/Mage Enemy/mage_enemy.tscn" id="7_14wpr"]
+
+[node name="GameScene" type="Node2D" node_paths=PackedStringArray("enemy")]
+script = ExtResource("1_sv04b")
+time_to_boss = 601.0
+enemy = NodePath("FollowerEnemy")
+frequency = 3.0
+
+[node name="SpawnManager" parent="." instance=ExtResource("2_rlq2x")]
+
+[node name="Player" parent="." instance=ExtResource("2_25205")]
+position = Vector2(960, 540)
+acceleration_speed = 0.1
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(1, -17)
+
+[node name="FollowerEnemy" parent="." instance=ExtResource("3_14wpr")]
+position = Vector2(584, 446)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("4_rlq2x")
+
+[node name="SprinterEnemy" parent="." instance=ExtResource("4_jii22")]
+position = Vector2(1507, 213)
+
+[node name="TankEnemy" parent="." instance=ExtResource("5_rlq2x")]
+position = Vector2(1504, 738)
+
+[node name="ShooterEnemy" parent="." instance=ExtResource("6_25205")]
+position = Vector2(906, 293)
+
+[node name="MageEnemy" parent="." instance=ExtResource("7_14wpr")]
+position = Vector2(379, 710)
+
+[node name="TimeCountText" type="RichTextLabel" parent="."]
+offset_left = 1920.0
+offset_top = 20.0
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "Time : 10.00"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1

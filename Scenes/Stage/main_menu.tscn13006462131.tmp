@@ -1,0 +1,222 @@
+[gd_scene load_steps=14 format=3 uid="uid://b38r8med5cvwg"]
+
+[ext_resource type="Script" uid="uid://dmljis8ggyyjq" path="res://Scenes/Stage/main_menu.gd" id="1_1vjg2"]
+[ext_resource type="Script" uid="uid://3r5xghegs1q0" path="res://Scenes/Stage/options_menu.gd" id="1_d887f"]
+[ext_resource type="LabelSettings" uid="uid://8km1h6sydkna" path="res://Resources/LabelSettings/h2_label.tres" id="3_ctg0j"]
+[ext_resource type="LabelSettings" uid="uid://bb8srn7psmosc" path="res://Resources/LabelSettings/h3_label.tres" id="4_q1oxj"]
+[ext_resource type="Environment" uid="uid://b4now75hmvnx6" path="res://Resources/Environment/game_scene.tres" id="5_q1oxj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_crxf8"]
+bg_color = Color(0.07231444, 0.07231444, 0.07231444, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7nexd"]
+content_margin_left = 32.0
+content_margin_top = 32.0
+content_margin_right = 32.0
+content_margin_bottom = 32.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="Theme" id="Theme_vgy0v"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_q1oxj"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_uqmrb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ctg0j"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.07910305, 0.07910305, 0.07910305, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q1oxj"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uqmrb"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainMenu" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1vjg2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -126.0
+offset_top = -98.0
+offset_right = 126.0
+offset_bottom = 98.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 32
+
+[node name="StartButton" type="Button" parent="MainMenu/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../QuitButton")
+focus_neighbor_bottom = NodePath("../OptionsButton")
+focus_next = NodePath("../OptionsButton")
+focus_previous = NodePath("../QuitButton")
+theme_override_font_sizes/font_size = 64
+text = "Start"
+
+[node name="OptionsButton" type="Button" parent="MainMenu/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../StartButton")
+focus_neighbor_bottom = NodePath("../QuitButton")
+focus_next = NodePath("../QuitButton")
+focus_previous = NodePath("../StartButton")
+theme_override_font_sizes/font_size = 64
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="MainMenu/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../OptionsButton")
+focus_neighbor_bottom = NodePath("../StartButton")
+focus_next = NodePath("../StartButton")
+focus_previous = NodePath("../OptionsButton")
+theme_override_font_sizes/font_size = 64
+text = "Quit"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MainMenu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -467.0
+offset_right = 467.0
+offset_bottom = 175.0
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 128
+bbcode_enabled = true
+text = "SURVIVAL TIME"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OptionsMenu" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.2
+anchor_right = 0.7
+anchor_bottom = 0.8
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_crxf8")
+script = ExtResource("1_d887f")
+
+[node name="OptionsScrollContainer" type="ScrollContainer" parent="OptionsMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7nexd")
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsMenu/OptionsScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 32
+
+[node name="GeneralLabel" type="Label" parent="OptionsMenu/OptionsScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "General"
+label_settings = ExtResource("3_ctg0j")
+vertical_alignment = 1
+
+[node name="LanguageContainer" type="VBoxContainer" parent="OptionsMenu/OptionsScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="LanguageLabel" type="Label" parent="OptionsMenu/OptionsScrollContainer/VBoxContainer/LanguageContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Language"
+label_settings = ExtResource("4_q1oxj")
+vertical_alignment = 1
+
+[node name="OptionButton" type="OptionButton" parent="OptionsMenu/OptionsScrollContainer/VBoxContainer/LanguageContainer"]
+layout_mode = 2
+theme = SubResource("Theme_vgy0v")
+toggle_mode = false
+clip_text = true
+
+[node name="MusicContainer" type="VBoxContainer" parent="OptionsMenu/OptionsScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="MusicLabel" type="Label" parent="OptionsMenu/OptionsScrollContainer/VBoxContainer/MusicContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Music"
+label_settings = ExtResource("4_q1oxj")
+vertical_alignment = 1
+
+[node name="MusicSlider" type="HSlider" parent="OptionsMenu/OptionsScrollContainer/VBoxContainer/MusicContainer"]
+layout_mode = 2
+theme_override_icons/grabber = SubResource("ImageTexture_q1oxj")
+theme_override_icons/grabber_highlight = SubResource("ImageTexture_uqmrb")
+theme_override_styles/slider = SubResource("StyleBoxFlat_ctg0j")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_q1oxj")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_uqmrb")
+value = 50.0
+scrollable = false
+
+[node name="SFXContainer" type="VBoxContainer" parent="OptionsMenu/OptionsScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="SFXLabel" type="Label" parent="OptionsMenu/OptionsScrollContainer/VBoxContainer/SFXContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "SFX"
+label_settings = ExtResource("4_q1oxj")
+vertical_alignment = 1
+
+[node name="SFXSlider" type="HSlider" parent="OptionsMenu/OptionsScrollContainer/VBoxContainer/SFXContainer"]
+layout_mode = 2
+theme_override_icons/grabber = SubResource("ImageTexture_q1oxj")
+theme_override_icons/grabber_highlight = SubResource("ImageTexture_uqmrb")
+theme_override_styles/slider = SubResource("StyleBoxFlat_ctg0j")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_q1oxj")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_uqmrb")
+value = 50.0
+scrollable = false
+
+[node name="BackButton" type="Button" parent="OptionsMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 1.0
+anchor_right = 0.8
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "Back"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("5_q1oxj")

@@ -1,0 +1,46 @@
+[gd_scene load_steps=10 format=3 uid="uid://1ul327s6rguk"]
+
+[ext_resource type="Script" uid="uid://bt8rj3yrbffvb" path="res://Scenes/Enemy/Shooter Enemy/shooter_enemy.gd" id="1_vjp40"]
+[ext_resource type="PackedScene" uid="uid://necn243bmpxx" path="res://Scenes/Bullet/physical_bullet.tscn" id="2_36yet"]
+[ext_resource type="Resource" uid="uid://cvcf4pn05ne4r" path="res://Resources/Trigger Probability/Shooter Probability.tres" id="2_fsip0"]
+[ext_resource type="Resource" uid="uid://dkyac7jclfy80" path="res://Resources/Enemy Data/Shooter Data.tres" id="2_qn4du"]
+[ext_resource type="Texture2D" uid="uid://b5do2r0viw2vq" path="res://Sprites/Square.png" id="3_4oqhl"]
+[ext_resource type="Resource" uid="uid://dvoibx8tek078" path="res://Resources/Unity Type/Enemy.tres" id="3_nrltf"]
+[ext_resource type="Resource" uid="uid://cuavrjvohel75" path="res://Resources/Unity Type/Player.tres" id="3_uyofl"]
+[ext_resource type="Script" uid="uid://bqguc4lmxea1i" path="res://Addon/Global Timer/global_timer.gd" id="4_3i6ha"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sss2j"]
+size = Vector2(32, 32)
+
+[node name="ShooterEnemy" type="Area2D"]
+modulate = Color(0, 1, 0.03999734, 1)
+script = ExtResource("1_vjp40")
+shoot_distance = 900.0
+shoot_time = 3.0
+shoot_damage = 1.0
+shoot_speed = 15.0
+bullet = ExtResource("2_36yet")
+target_type = ExtResource("3_uyofl")
+flee_distance = 400.0
+min_rotation_time = 3.0
+max_rotation_time = 6.0
+change_direction_probability = ExtResource("2_fsip0")
+unit_type = ExtResource("3_nrltf")
+enemy_data = ExtResource("2_qn4du")
+blink_color = Color(1, 1, 1, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_4oqhl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_sss2j")
+
+[node name="RotationTimer" type="Node" parent="."]
+script = ExtResource("4_3i6ha")
+wait_time = 5.0
+autoplay = true
+metadata/_custom_type_script = "uid://bqguc4lmxea1i"
+
+[node name="ShootTimer" type="Node" parent="."]
+script = ExtResource("4_3i6ha")
+metadata/_custom_type_script = "uid://bqguc4lmxea1i"

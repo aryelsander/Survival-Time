@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dofe3q3xbhai2"]
+
+[ext_resource type="Script" uid="uid://582rb13wc8qt" path="res://Scenes/Player/Powers/Dash/dash_power.gd" id="1_1p88h"]
+[ext_resource type="Script" uid="uid://bqguc4lmxea1i" path="res://Addon/Global Timer/global_timer.gd" id="2_yh4io"]
+
+[node name="DashPower" type="Node"]
+script = ExtResource("1_1p88h")
+can_dash = true
+
+[node name="DashTimer" type="Node" parent="."]
+script = ExtResource("2_yh4io")
+metadata/_custom_type_script = "uid://bqguc4lmxea1i"
+
+[node name="DashRefresh" type="Node" parent="."]
+script = ExtResource("2_yh4io")
+metadata/_custom_type_script = "uid://bqguc4lmxea1i"

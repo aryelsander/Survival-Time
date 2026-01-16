@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://baffyvu8l15kj"]
+
+[ext_resource type="PackedScene" uid="uid://cyu7mqfll4rh7" path="res://Scenes/Player/player.tscn" id="1_ucd7u"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_ucd7u")]
+max_speed = 10.0
+acceleration_speed = 0.1
+deceleration_speed = 0.005

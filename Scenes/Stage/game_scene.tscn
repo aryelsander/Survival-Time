@@ -1,0 +1,74 @@
+[gd_scene load_steps=6 format=3 uid="uid://baffyvu8l15kj"]
+
+[ext_resource type="Script" uid="uid://dajhau3ak3yrs" path="res://Scenes/Stage/GameScene.gd" id="1_sv04b"]
+[ext_resource type="PackedScene" uid="uid://cyu7mqfll4rh7" path="res://Scenes/Player/player.tscn" id="2_25205"]
+[ext_resource type="PackedScene" uid="uid://kk15sx7k0m2t" path="res://Scenes/Stage/spawn_manager.tscn" id="2_rlq2x"]
+[ext_resource type="Script" uid="uid://bqguc4lmxea1i" path="res://Addon/Global Timer/global_timer.gd" id="3_gqxi6"]
+[ext_resource type="Environment" uid="uid://b4now75hmvnx6" path="res://Resources/Environment/game_scene.tres" id="4_rlq2x"]
+
+[node name="GameScene" type="Node2D"]
+script = ExtResource("1_sv04b")
+frequency = 3.0
+
+[node name="TimeCountText" type="RichTextLabel" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 777.0
+offset_right = 1143.0
+offset_bottom = 88.0
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "Time : 10.00"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(961, 523)
+
+[node name="TimeToBossTimer" type="Node" parent="."]
+script = ExtResource("3_gqxi6")
+wait_time = 601.0
+autoplay = true
+metadata/_custom_type_script = "uid://bqguc4lmxea1i"
+
+[node name="SpawnManager" parent="." instance=ExtResource("2_rlq2x")]
+
+[node name="Player" parent="." instance=ExtResource("2_25205")]
+position = Vector2(960, 540)
+acceleration_speed = 0.1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("4_rlq2x")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+z_index = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.2
+anchor_right = 0.7
+anchor_bottom = 0.8
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+
+[node name="Resume" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Start"
+
+[node name="Button2" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Start"
+
+[node name="Button3" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Start"

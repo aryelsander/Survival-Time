@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SpawnData" load_steps=4 format=3 uid="uid://cqyjxig2f6qg4"]
+
+[ext_resource type="Script" uid="uid://cncbc1rh3of0k" path="res://Scripts/spawn_data.gd" id="1_3yf7h"]
+[ext_resource type="Script" uid="uid://bbk81aukhacib" path="res://Scripts/wave_data.gd" id="2_dhmt0"]
+[ext_resource type="Resource" uid="uid://dy0lspdqagq1h" path="res://Resources/Wave Data/Wave 1.tres" id="3_dhmt0"]
+
+[resource]
+script = ExtResource("1_3yf7h")
+wave_datas = Array[ExtResource("2_dhmt0")]([ExtResource("3_dhmt0")])
+metadata/_custom_type_script = "uid://cncbc1rh3of0k"

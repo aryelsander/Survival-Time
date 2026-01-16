@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvgp48j1c7btm"]
+
+[ext_resource type="Script" uid="uid://dwm8dwlas3521" path="res://Scenes/Stage/upgrade_scene.gd" id="1_tmfrm"]
+[ext_resource type="Texture2D" uid="uid://dqv8snyl582pm" path="res://Sprites/Circle.png" id="2_l8fdh"]
+[ext_resource type="PackedScene" uid="uid://c2t4hly8acvyf" path="res://Scenes/UI/upgrade_button.tscn" id="4_68e5o"]
+[ext_resource type="Environment" uid="uid://b4now75hmvnx6" path="res://Resources/Environment/game_scene.tres" id="4_skqef"]
+
+[node name="UpgradeScene" type="Node2D"]
+script = ExtResource("1_tmfrm")
+default_zoom_camera = Vector2(1, 1)
+min_zoom_camera = Vector2(0.5, 0.5)
+max_zoom_camera = Vector2(2, 2)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_l8fdh")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ResetButton" type="Button" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -8.0
+offset_right = 4.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Reset Camera"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("4_skqef")
+
+[node name="UpgradeButton" parent="." instance=ExtResource("4_68e5o")]

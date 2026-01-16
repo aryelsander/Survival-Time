@@ -1,0 +1,108 @@
+[gd_scene load_steps=4 format=3 uid="uid://b38r8med5cvwg"]
+
+[ext_resource type="Script" uid="uid://dmljis8ggyyjq" path="res://Scenes/Stage/main_menu.gd" id="1_1vjg2"]
+[ext_resource type="Script" uid="uid://3r5xghegs1q0" path="res://Scenes/Stage/options_panel.gd" id="1_d887f"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1vjg2"]
+font_size = 64
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainMenu" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1vjg2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -126.0
+offset_top = -98.0
+offset_right = 126.0
+offset_bottom = 98.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 32
+
+[node name="StartButton" type="Button" parent="MainMenu/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../QuitButton")
+focus_neighbor_bottom = NodePath("../OptionsButton")
+focus_next = NodePath("../OptionsButton")
+focus_previous = NodePath("../QuitButton")
+theme_override_font_sizes/font_size = 64
+text = "Start"
+
+[node name="OptionsButton" type="Button" parent="MainMenu/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../StartButton")
+focus_neighbor_bottom = NodePath("../QuitButton")
+focus_next = NodePath("../QuitButton")
+focus_previous = NodePath("../StartButton")
+theme_override_font_sizes/font_size = 64
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="MainMenu/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../OptionsButton")
+focus_neighbor_bottom = NodePath("../StartButton")
+focus_next = NodePath("../StartButton")
+focus_previous = NodePath("../OptionsButton")
+theme_override_font_sizes/font_size = 64
+text = "Quit"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MainMenu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -467.0
+offset_right = 467.0
+offset_bottom = 175.0
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 128
+bbcode_enabled = true
+text = "SURVIVAL TIME"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OptionsMenu" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.2
+anchor_right = 0.7
+anchor_bottom = 0.8
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_d887f")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsMenu"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Options" type="Label" parent="OptionsMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Settings "
+label_settings = SubResource("LabelSettings_1vjg2")
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,0 +1,46 @@
+[gd_scene load_steps=9 format=3 uid="uid://baffyvu8l15kj"]
+
+[ext_resource type="Script" uid="uid://dajhau3ak3yrs" path="res://Scenes/Stage/GameScene.gd" id="1_sv04b"]
+[ext_resource type="PackedScene" uid="uid://cyu7mqfll4rh7" path="res://Scenes/Player/player.tscn" id="2_25205"]
+[ext_resource type="PackedScene" uid="uid://dat6ogkwso05j" path="res://Scenes/Enemy/Follower Enemy/follower_enemy.tscn" id="3_14wpr"]
+[ext_resource type="PackedScene" uid="uid://cn4piaorowspf" path="res://Scenes/Enemy/SprinterEnemy/sprinter_enemy.tscn" id="4_jii22"]
+[ext_resource type="PackedScene" uid="uid://b7bb8fobrpse8" path="res://Scenes/Enemy/Tank Enemy/tank_enemy.tscn" id="5_rlq2x"]
+[ext_resource type="PackedScene" uid="uid://1ul327s6rguk" path="res://Scenes/Enemy/Shooter Enemy/shooter_enemy.tscn" id="6_25205"]
+[ext_resource type="PackedScene" uid="uid://dsjv2i0olwynk" path="res://Scenes/Enemy/Mage Enemy/mage_enemy.tscn" id="7_14wpr"]
+
+[sub_resource type="Environment" id="Environment_sss2j"]
+background_mode = 3
+tonemap_white = 16.0
+glow_enabled = true
+glow_intensity = 2.61
+glow_bloom = 0.35
+adjustment_enabled = true
+
+[node name="GameScene" type="Node2D" node_paths=PackedStringArray("enemy")]
+script = ExtResource("1_sv04b")
+enemy = NodePath("FollowerEnemy")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(961, 523)
+
+[node name="Player" parent="." instance=ExtResource("2_25205")]
+position = Vector2(961, 523)
+acceleration_speed = 0.1
+
+[node name="FollowerEnemy" parent="." instance=ExtResource("3_14wpr")]
+position = Vector2(584, 446)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_sss2j")
+
+[node name="SprinterEnemy" parent="." instance=ExtResource("4_jii22")]
+position = Vector2(1507, 213)
+
+[node name="TankEnemy" parent="." instance=ExtResource("5_rlq2x")]
+position = Vector2(1504, 738)
+
+[node name="ShooterEnemy" parent="." instance=ExtResource("6_25205")]
+position = Vector2(906, 293)
+
+[node name="MageEnemy" parent="." instance=ExtResource("7_14wpr")]
+position = Vector2(379, 710)

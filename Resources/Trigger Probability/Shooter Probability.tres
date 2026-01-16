@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="TriggerProbability" load_steps=5 format=3 uid="uid://cvcf4pn05ne4r"]
+
+[ext_resource type="Script" uid="uid://bgqs2gj62o05i" path="res://Addon/Trigger Probability/trigger_data.gd" id="1_31oyj"]
+[ext_resource type="Script" uid="uid://cc614nja4kump" path="res://Addon/Trigger Probability/trigger_probability.gd" id="1_vf3d7"]
+
+[sub_resource type="Resource" id="Resource_vf3d7"]
+script = ExtResource("1_31oyj")
+name = "Left"
+probability = 50.0001
+value = -1.0
+metadata/_custom_type_script = "uid://bgqs2gj62o05i"
+
+[sub_resource type="Resource" id="Resource_qduxy"]
+script = ExtResource("1_31oyj")
+name = "Right"
+probability = 50.0001
+value = 1.0
+metadata/_custom_type_script = "uid://bgqs2gj62o05i"
+
+[resource]
+script = ExtResource("1_vf3d7")
+trigger_datas = Array[ExtResource("1_31oyj")]([SubResource("Resource_vf3d7"), SubResource("Resource_qduxy")])
+metadata/_custom_type_script = "uid://cc614nja4kump"

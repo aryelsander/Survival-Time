@@ -1,0 +1,97 @@
+[gd_scene load_steps=4 format=3 uid="uid://b38r8med5cvwg"]
+
+[ext_resource type="Script" uid="uid://dmljis8ggyyjq" path="res://Scenes/Stage/main_menu.gd" id="1_1vjg2"]
+[ext_resource type="PackedScene" uid="uid://whwc31fcqlo8" path="res://Scenes/Stage/options_menu.tscn" id="2_j3nt2"]
+[ext_resource type="Environment" uid="uid://b4now75hmvnx6" path="res://Resources/Environment/game_scene.tres" id="5_q1oxj"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainMenu" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1vjg2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -126.0
+offset_top = -98.0
+offset_right = 126.0
+offset_bottom = 98.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 32
+
+[node name="NewGameButton" type="Button" parent="MainMenu/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../ExitButton")
+focus_neighbor_bottom = NodePath("../ContinueButton")
+focus_next = NodePath("../ContinueButton")
+focus_previous = NodePath("../ExitButton")
+theme_override_font_sizes/font_size = 64
+text = "New Game"
+
+[node name="ContinueButton" type="Button" parent="MainMenu/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../NewGameButton")
+focus_neighbor_bottom = NodePath("../SettingsButton")
+focus_next = NodePath("../SettingsButton")
+focus_previous = NodePath("../NewGameButton")
+theme_override_font_sizes/font_size = 64
+text = "Continue"
+
+[node name="SettingsButton" type="Button" parent="MainMenu/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../ContinueButton")
+focus_neighbor_bottom = NodePath("../ExitButton")
+focus_next = NodePath("../ExitButton")
+focus_previous = NodePath("../ContinueButton")
+theme_override_font_sizes/font_size = 64
+text = "Settings"
+
+[node name="ExitButton" type="Button" parent="MainMenu/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../SettingsButton")
+focus_neighbor_bottom = NodePath("../NewGameButton")
+focus_next = NodePath("../NewGameButton")
+focus_previous = NodePath("../SettingsButton")
+theme_override_font_sizes/font_size = 64
+text = "Exit"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MainMenu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -467.0
+offset_right = 467.0
+offset_bottom = 175.0
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 128
+bbcode_enabled = true
+text = "SURVIVAL TIME"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OptionsMenu" parent="." node_paths=PackedStringArray("return_focus_control") instance=ExtResource("2_j3nt2")]
+layout_mode = 1
+return_focus_control = NodePath("../MainMenu/VBoxContainer/SettingsButton")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("5_q1oxj")
