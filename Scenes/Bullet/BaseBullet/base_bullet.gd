@@ -1,14 +1,14 @@
 class_name BaseBullet extends Area2D
 
-var target_type : UnitType
+var _target_type : UnitType
 var current_damage : float
 var _speed : float
-var target_enemy
-func setup(spawn_position : Vector2,speed : float,target_enemy : Node2D,damage : float,enemy : UnitType) -> void:
-	self.target_enemy = target_enemy
+var _target : Node2D
+func setup(spawn_position : Vector2,speed : float,target : Node2D,damage : float,target_type : UnitType) -> void:
+	_target = target
 	_speed = speed
 	global_position = spawn_position
-	target_type = enemy
+	_target_type = target_type
 	current_damage = damage
 	
 func on_collision_enemy() -> void:

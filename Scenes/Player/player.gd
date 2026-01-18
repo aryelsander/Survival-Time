@@ -40,7 +40,6 @@ func on_collision_bullet(bullet : BaseBullet) -> void:
 func _on_shoot() -> void:
 	if not target : return
 	var bullet_instance: BaseBullet = shoot_power.get_bullet()
-	var target_direction = position.direction_to(target.position)
 	get_tree().current_scene.add_child(bullet_instance)
 	bullet_instance.global_position = position
 	bullet_instance.setup(global_position,shoot_speed,target,damage,target_type)

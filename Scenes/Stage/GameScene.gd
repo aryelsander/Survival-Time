@@ -29,6 +29,6 @@ func set_time(time : float) -> void:
 
 func seconds_to_time(value: float) -> String:
 	var total_seconds := int(value)
-	var minutes := total_seconds / 60
-	var seconds := total_seconds % 60
+	var minutes : int = roundi(total_seconds / 60.0)
+	var seconds : int = total_seconds % 60
 	return "%02d:%02d" % [minutes, seconds]
