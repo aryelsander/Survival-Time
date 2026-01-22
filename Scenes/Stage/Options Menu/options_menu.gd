@@ -8,9 +8,9 @@ class_name OptionsMenu extends Panel
 @onready var master_volume_label: Label = $OptionsScrollContainer/VBoxContainer/MasterVolumeContainer/MasterVolumeLabel
 @onready var master_volume_slider: HSlider = $OptionsScrollContainer/VBoxContainer/MasterVolumeContainer/MasterVolumeSlider
 @onready var music_label: Label = $OptionsScrollContainer/VBoxContainer/MusicContainer/MusicLabel
-@onready var music_slider: HSlider = $OptionsScrollContainer/VBoxContainer/MusicContainer/MusicSlider
+@onready var music_volume_slider: HSlider = $OptionsScrollContainer/VBoxContainer/MusicContainer/MusicSlider
 @onready var sfx_label: Label = $OptionsScrollContainer/VBoxContainer/SFXContainer/SFXLabel
-@onready var sfx_slider: HSlider = $OptionsScrollContainer/VBoxContainer/SFXContainer/SFXSlider
+@onready var sfx_volume_slider: HSlider = $OptionsScrollContainer/VBoxContainer/SFXContainer/SFXSlider
 @onready var back_button: Button = $BackButton
 
 signal open
@@ -24,6 +24,24 @@ func _ready() -> void:
 	add_options_menu()
 	call_deferred("update_ui")
 	close.connect(_on_close)
+	master_volume_slider.value_changed.connect(change_master_volume)
+	master_volume_slider.drag_ended.connect(save_volume)
+	music_volume_slider.value_changed.connect(change_music_volume)
+	music_volume_slider.drag_ended.connect(save_volume)
+	sfx_volume_slider.value_changed.connect(change_fx_volume)
+	sfx_volume_slider.drag_ended.connect(save_volume)
+
+func save_volume(changed: bool) -> void:
+	if changed:
+		GameManager.save_configuration_data(GameManager.configuration_data)
+
+
+func change_master_volume(value: float) -> void:
+	AudioManager.change_master_volume(value)		
+func change_music_volume(value: float) -> void:
+	AudioManager.change_music_volume(value)
+func change_fx_volume(value: float) -> void:
+	AudioManager.change_fx_volume(value)
 
 func add_options_menu() -> void:
 	option_button.clear()
@@ -37,6 +55,9 @@ func update_ui() -> void:
 	sfx_label.text = tr("SFX")
 	back_button.text = tr("BACK")
 	master_volume_label.text = tr("MASTER_VOLUME")
+	master_volume_slider.value = GameManager.configuration_data.master_volume
+	music_volume_slider.value = GameManager.configuration_data.music_volume
+	sfx_volume_slider.value = GameManager.configuration_data.fx_volume
 	for index in option_button.item_count:
 		option_button.set_item_text(index,tr(languages[index][0]))
 		

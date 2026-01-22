@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="Survival Time"
-run/main_scene="uid://cvgp48j1c7btm"
+run/main_scene="uid://b38r8med5cvwg"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
 GameManager="*res://Scripts/game_manager.gd"
+AudioManager="*res://Scenes/Audio Manager/audio_manager.tscn"
 
 [display]
 

@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://baffyvu8l15kj"]
 
-[ext_resource type="Script" uid="uid://dajhau3ak3yrs" path="res://Scenes/Stage/GameScene.gd" id="1_sv04b"]
+[ext_resource type="Script" uid="uid://dajhau3ak3yrs" path="res://Scenes/Stage/Game Scene/GameScene.gd" id="1_sv04b"]
 [ext_resource type="PackedScene" uid="uid://cyu7mqfll4rh7" path="res://Scenes/Player/player.tscn" id="2_25205"]
-[ext_resource type="PackedScene" uid="uid://kk15sx7k0m2t" path="res://Scenes/Stage/spawn_manager.tscn" id="2_rlq2x"]
+[ext_resource type="PackedScene" uid="uid://kk15sx7k0m2t" path="res://Scenes/Stage/Game Scene/Managers/Spawn Manager/spawn_manager.tscn" id="2_rlq2x"]
 [ext_resource type="Script" uid="uid://bqguc4lmxea1i" path="res://Addon/Global Timer/global_timer.gd" id="3_gqxi6"]
 [ext_resource type="Environment" uid="uid://b4now75hmvnx6" path="res://Resources/Environment/game_scene.tres" id="4_rlq2x"]
 

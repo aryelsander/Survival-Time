@@ -31,7 +31,7 @@ func update_ui() -> void:
 	exit_button.text = tr("EXIT")
 	
 func _on_start_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/Stage/upgrade_scene.tscn")
+	get_tree().change_scene_to_file("uid://cvgp48j1c7btm")
 	pass
 
 func _on_options_pressed() -> void:

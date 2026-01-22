@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://1ul327s6rguk"]
 
 [ext_resource type="Script" uid="uid://bt8rj3yrbffvb" path="res://Scenes/Enemy/Shooter Enemy/shooter_enemy.gd" id="1_vjp40"]
-[ext_resource type="PackedScene" uid="uid://necn243bmpxx" path="res://Scenes/Bullet/physical_bullet.tscn" id="2_36yet"]
+[ext_resource type="PackedScene" uid="uid://necn243bmpxx" path="res://Scenes/Bullet/Physical Bullet/physical_bullet.tscn" id="2_36yet"]
 [ext_resource type="Resource" uid="uid://cvcf4pn05ne4r" path="res://Resources/Trigger Probability/Shooter Probability.tres" id="2_fsip0"]
 [ext_resource type="Resource" uid="uid://dkyac7jclfy80" path="res://Resources/Enemy Data/Shooter Data.tres" id="2_qn4du"]
 [ext_resource type="Texture2D" uid="uid://b5do2r0viw2vq" path="res://Sprites/Square.png" id="3_4oqhl"]

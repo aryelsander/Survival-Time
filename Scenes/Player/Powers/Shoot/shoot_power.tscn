@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cxgblyi7lltfb"]
 
 [ext_resource type="Script" uid="uid://bvcis5gw4q3kd" path="res://Scenes/Player/Powers/Shoot/shoot_power.gd" id="1_nv4dg"]
-[ext_resource type="PackedScene" uid="uid://necn243bmpxx" path="res://Scenes/Bullet/physical_bullet.tscn" id="2_j6xvl"]
+[ext_resource type="PackedScene" uid="uid://necn243bmpxx" path="res://Scenes/Bullet/Physical Bullet/physical_bullet.tscn" id="2_j6xvl"]
 [ext_resource type="Script" uid="uid://bqguc4lmxea1i" path="res://Addon/Global Timer/global_timer.gd" id="3_jec1l"]
 
 [node name="ShootPower" type="Node"]

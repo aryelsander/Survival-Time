@@ -15,7 +15,7 @@ func _ready() -> void:
 	default_position()
 	reset_button.pressed.connect(default_position)
 	upgrade_button.button.grab_focus()
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	#zoom_camera()
 	focused_control = get_viewport().gui_get_focus_owner()
 	if focused_control:

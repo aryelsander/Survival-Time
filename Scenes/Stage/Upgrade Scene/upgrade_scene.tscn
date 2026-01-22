@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://cvgp48j1c7btm"]
 
-[ext_resource type="Script" uid="uid://dwm8dwlas3521" path="res://Scenes/Stage/upgrade_scene.gd" id="1_tmfrm"]
+[ext_resource type="Script" uid="uid://dwm8dwlas3521" path="res://Scenes/Stage/Upgrade Scene/upgrade_scene.gd" id="1_tmfrm"]
 [ext_resource type="Texture2D" uid="uid://dqv8snyl582pm" path="res://Sprites/Circle.png" id="2_l8fdh"]
-[ext_resource type="PackedScene" uid="uid://dpbqfdvmt7max" path="res://Scenes/UI/new_upgrade_button.tscn" id="4_68e5o"]
+[ext_resource type="PackedScene" uid="uid://dpbqfdvmt7max" path="res://Scenes/Stage/Upgrade Scene/Upgrade Button/upgrade_button.tscn" id="4_68e5o"]
 [ext_resource type="Environment" uid="uid://b4now75hmvnx6" path="res://Resources/Environment/game_scene.tres" id="4_skqef"]
 
 [node name="UpgradeScene" type="Node2D"]

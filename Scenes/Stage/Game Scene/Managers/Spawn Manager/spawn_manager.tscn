@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://kk15sx7k0m2t"]
 
-[ext_resource type="Script" uid="uid://dodsn6f8wlgob" path="res://Scenes/Stage/spawn_manager.gd" id="1_wi1is"]
+[ext_resource type="Script" uid="uid://dodsn6f8wlgob" path="res://Scenes/Stage/Game Scene/Managers/Spawn Manager/spawn_manager.gd" id="1_wi1is"]
 [ext_resource type="Resource" uid="uid://cqyjxig2f6qg4" path="res://Resources/Spawn Data/Spawn Data.tres" id="2_p24rr"]
 [ext_resource type="Script" uid="uid://bqguc4lmxea1i" path="res://Addon/Global Timer/global_timer.gd" id="2_xlr44"]
 [ext_resource type="Resource" uid="uid://rj8mq6b5mej4" path="res://Resources/Trigger Probability/Spawn Direction Probability.tres" id="3_p24rr"]

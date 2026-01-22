@@ -40,8 +40,8 @@ func update_ui() -> void:
 	title_label.text = upgrade_button_data.get_title_id
 	description_label.text = upgrade_button_data.get_description
 	quantity_label.text = "0/" + str(upgrade_button_data.points_data.upgrade_data.size())
-	if GameManager.points < upgrade_button_data.points_data.upgrade_data[0].cost[0].value:
-		button.disabled = true
+	#if GameManager.points < upgrade_button_data.points_data.upgrade_data[0].cost[0].value:
+		#button.disabled = true
 func show_description() -> void:
 	header_container.visible = true
 	description_container.visible = true
@@ -55,23 +55,3 @@ func _on_mouse_entered() -> void:
 func _on_mouse_exited() -> void:
 	if has_focus(): return
 	hide_description()
-#
-#func wrap_text_by_words(text: String, max_chars_per_line: int) -> String:
-	#var words := text.split(" ", false)
-	#var lines: Array[String] = []
-	#var current_line := ""
-#
-	#for word in words:
-		#var space =   "" if current_line.is_empty() else " "
-		#var test_line : String = current_line + space + word
-#
-		#if test_line.length() <= max_chars_per_line:
-			#current_line = test_line
-		#else:
-			#lines.append(current_line)
-			#current_line = word
-#
-	#if not current_line.is_empty():
-		#lines.append(current_line)
-#
-	#return "\n".join(lines)

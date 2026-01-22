@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="WaveData" load_steps=3 format=3 uid="uid://dy0lspdqagq1h"]
 
 [ext_resource type="PackedScene" uid="uid://dat6ogkwso05j" path="res://Scenes/Enemy/Follower Enemy/follower_enemy.tscn" id="1_d4eun"]
-[ext_resource type="Script" uid="uid://bbk81aukhacib" path="res://Scripts/wave_data.gd" id="1_xbjk0"]
+[ext_resource type="Script" uid="uid://bbk81aukhacib" path="res://Scenes/Stage/Game Scene/Managers/Spawn Manager/wave_data.gd" id="1_xbjk0"]
 
 [resource]
 script = ExtResource("1_xbjk0")
