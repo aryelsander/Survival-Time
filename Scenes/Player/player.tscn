@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cyu7mqfll4rh7"]
+[gd_scene load_steps=9 format=3 uid="uid://cyu7mqfll4rh7"]
 
 [ext_resource type="Script" uid="uid://msoma1w0x1eg" path="res://Scenes/Player/player.gd" id="1_a3d8c"]
 [ext_resource type="Texture2D" uid="uid://dqv8snyl582pm" path="res://Sprites/Circle.png" id="1_uvnfx"]
@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://dvoibx8tek078" path="res://Resources/Unity Type/Enemy.tres" id="3_0u5uq"]
 [ext_resource type="PackedScene" uid="uid://dofe3q3xbhai2" path="res://Scenes/Player/Powers/Dash/dash_power.tscn" id="4_htcer"]
 [ext_resource type="PackedScene" uid="uid://cxgblyi7lltfb" path="res://Scenes/Player/Powers/Shoot/shoot_power.tscn" id="6_dd0ac"]
+[ext_resource type="Script" uid="uid://bqguc4lmxea1i" path="res://Addon/Global Timer/global_timer.gd" id="7_0u5uq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ucd7u"]
 radius = 16.0
@@ -20,6 +21,8 @@ unit_type = ExtResource("2_dd0ac")
 target_type = ExtResource("3_0u5uq")
 damage = 1.0
 shoot_speed = 10.0
+collision_quantity = 1
+time_to_find_target = 0.1
 blink_color = Color(0.10625774, 0.10625774, 0.10625774, 0.27450982)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -35,3 +38,7 @@ dash_refresh_time = 3.0
 
 [node name="ShootPower" parent="." instance=ExtResource("6_dd0ac")]
 shoot_time = 1.0
+
+[node name="GetClosestEnemyTimer" type="Node" parent="."]
+script = ExtResource("7_0u5uq")
+metadata/_custom_type_script = "uid://bqguc4lmxea1i"

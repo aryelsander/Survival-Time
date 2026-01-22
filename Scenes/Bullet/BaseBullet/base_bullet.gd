@@ -1,10 +1,14 @@
 class_name BaseBullet extends Area2D
 
+signal collision_enemy(base_bullet: BaseBullet)
+signal destroy
 var _target_type : UnitType
 var current_damage : float
 var _speed : float
 var _target : Node2D
-func setup(spawn_position : Vector2,speed : float,target : Node2D,damage : float,target_type : UnitType) -> void:
+var _collision_quantity : int
+func setup(collision_quantity : int,spawn_position : Vector2,speed : float,target : Node2D,damage : float,target_type : UnitType) -> void:
+	_collision_quantity = collision_quantity
 	_target = target
 	_speed = speed
 	global_position = spawn_position
@@ -12,5 +16,9 @@ func setup(spawn_position : Vector2,speed : float,target : Node2D,damage : float
 	current_damage = damage
 	
 func on_collision_enemy() -> void:
-	queue_free()
+	_collision_quantity -=1
+	collision_enemy.emit(self)
+	print(_collision_quantity)
+	if _collision_quantity <= 0:
+		destroy.emit(self)
 	pass

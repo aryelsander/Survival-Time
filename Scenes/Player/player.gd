@@ -9,10 +9,14 @@ class_name Player extends Area2D
 @export var target_type : UnitType
 @export var damage : float
 @export var shoot_speed : float
+@export var shoot_distance_vision : float
+@export var collision_quantity : int
+@export var time_to_find_target : float
 @export var blink_color : Color
 @onready var dash_power: DashPower = $DashPower
 @onready var shoot_power: ShootPower = $ShootPower
-
+@onready var get_closest_enemy_timer: GlobalTimer = $GetClosestEnemyTimer
+var game_scene : GameScene
 var current_speed : float
 var current_max_speed : float
 var current_velocity : Vector2
@@ -29,20 +33,20 @@ func _ready() -> void:
 	dash_power.dash_effect_timer.completed.connect(exit_dash)
 	shoot_power.shoot_timer.timeout.connect(_on_shoot)
 	
+	
 func bounds() -> void:
 	position = clamp(position,0,get_viewport().get_visible_rect().size)
 
 func on_collision_bullet(bullet : BaseBullet) -> void:
-	if bullet.target_type == unit_type:
+	if bullet._target_type == unit_type:
 		take_damage(bullet.current_damage)
 		bullet.on_collision_enemy()
 	
 func _on_shoot() -> void:
 	if not target : return
 	var bullet_instance: BaseBullet = shoot_power.get_bullet()
-	get_tree().current_scene.add_child(bullet_instance)
 	bullet_instance.global_position = position
-	bullet_instance.setup(global_position,shoot_speed,target,damage,target_type)
+	bullet_instance.setup(collision_quantity,global_position,shoot_speed,target,damage,target_type)
 
 func _process(_delta: float) -> void:
 	get_target()

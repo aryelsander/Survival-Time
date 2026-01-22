@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://necn243bmpxx"]
+
+[ext_resource type="Script" uid="uid://bm28pg6b0b3dc" path="res://Scenes/Bullet/physical_bullet.gd" id="1_3i6io"]
+[ext_resource type="Texture2D" uid="uid://bqfonp3y7gt2b" path="res://Sprites/bullet.png" id="2_0x0au"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l8742"]
+size = Vector2(10.98, 9.295)
+
+[node name="PhysicalBullet" type="Area2D"]
+script = ExtResource("1_3i6io")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.69687116, 0.54166144, 0, 1)
+rotation = 1.5707964
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_0x0au")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2.49, 0)
+shape = SubResource("RectangleShape2D_l8742")

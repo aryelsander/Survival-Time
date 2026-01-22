@@ -126,7 +126,7 @@ zoom_out={
 
 [internationalization]
 
-locale/translations=PackedStringArray("res://Localization/Localization.en.translation", "res://Localization/Localization.pt.translation")
+locale/translations=PackedStringArray("res://Localization/Localization.en.translation", "res://Localization/Localization.pt.translation", "res://Localization/Localization - Upgrades.en.translation", "res://Localization/Localization - Upgrades.pt.translation")
 
 [rendering]
 

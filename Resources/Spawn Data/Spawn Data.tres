@@ -6,5 +6,5 @@
 
 [resource]
 script = ExtResource("1_3yf7h")
-wave_datas = Array[ExtResource("2_dhmt0")]([ExtResource("3_dhmt0")])
+wave_datas = Array[ExtResource("2_dhmt0")]([ExtResource("3_dhmt0"), ExtResource("3_dhmt0")])
 metadata/_custom_type_script = "uid://cncbc1rh3of0k"

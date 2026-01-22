@@ -36,18 +36,16 @@ text = "Reset Camera"
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("4_skqef")
 
-[node name="UpgradeButton" parent="." node_paths=PackedStringArray("right_button", "left_button") instance=ExtResource("4_68e5o")]
+[node name="UpgradeButton" parent="." node_paths=PackedStringArray("right_button") instance=ExtResource("4_68e5o")]
 offset_left = -198.0
 offset_top = -441.0
 offset_right = 202.0
 offset_bottom = 9.0
 right_button = NodePath("../UpgradeButton2")
-left_button = NodePath("../UpgradeButton2")
 
-[node name="UpgradeButton2" parent="." node_paths=PackedStringArray("right_button", "left_button") instance=ExtResource("4_68e5o")]
+[node name="UpgradeButton2" parent="." node_paths=PackedStringArray("right_button") instance=ExtResource("4_68e5o")]
 offset_left = 276.0
 offset_top = -449.0
 offset_right = 676.0
 offset_bottom = 1.0
 right_button = NodePath("../UpgradeButton")
-left_button = NodePath("../UpgradeButton")

@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_xbjk0")
-wave_time = 601.0
-spawn_time = 3.0
+wave_time = 60.0
+spawn_time = 0.5
 enemies = Array[PackedScene]([ExtResource("1_d4eun")])
 metadata/_custom_type_script = "uid://bbk81aukhacib"

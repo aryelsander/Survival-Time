@@ -52,7 +52,7 @@ func shoot() -> void:
 	var bullet_instance : BaseBullet = bullet.instantiate()
 	get_tree().current_scene.add_child(bullet_instance)
 	bullet_instance.global_position = position
-	bullet_instance.setup(global_position,shoot_speed,target,shoot_damage,target_type)
+	bullet_instance.setup(1,global_position,shoot_speed,target,shoot_damage,target_type)
 	var bullet_destroy_timer = GlobalTimer.new()
 	bullet_destroy_timer.autoplay = true
 	bullet_destroy_timer.wait_time = shoot_time_to_destroy

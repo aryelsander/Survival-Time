@@ -1,7 +1,7 @@
 class_name BaseEnemy extends Area2D
 var color : Color
 
-signal death
+signal death()
 signal take_damage(damage : float)
 signal collision_player(player : Player)
 signal collision_bullet(bullet : BaseBullet)
@@ -10,7 +10,7 @@ signal collision_bullet(bullet : BaseBullet)
 @export var blink_color : Color
 var current_health : float
 var target : Player
-
+var spawn_manager : SpawnManager
 func _ready() -> void:
 	target = GameManager.player
 	color = modulate
@@ -20,6 +20,7 @@ func _ready() -> void:
 	collision_player.connect(_on_collision_player)
 	take_damage.connect(_on_take_damage)
 	death.connect(_on_death)
+	
 func _on_take_damage(damage : float) -> void:
 	current_health -= damage
 	if current_health <= 0:
@@ -31,6 +32,8 @@ func get_target() -> bool:
 	return target != null
 
 func _on_death() -> void:
+	spawn_manager.spawned_enemies.erase(self)
+	spawn_manager.get_closest_enemy(target)
 	queue_free()
 
 func _on_collision_bullet(bullet : BaseBullet) -> void:
@@ -40,16 +43,15 @@ func _on_collision_bullet(bullet : BaseBullet) -> void:
 
 func _on_collision_player(player : Player) -> void:
 	player.take_damage(enemy_data.base_damage)
+	death.emit()
 	queue_free()
 
 func _on_area_entered(area : Area2D) -> void:
 	if area is Player:
 		collision_player.emit(area)
-	
-	
 		
 	if area is BaseBullet:
-		if area.target_type == unit_type:
+		if area._target_type == unit_type:
 			collision_bullet.emit(area)
 
 func blink() -> void:

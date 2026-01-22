@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="UpgradeButtonData" load_steps=2 format=3 uid="uid://85sesn3q6r6n"]
+[gd_resource type="Resource" script_class="UpgradeButtonData" load_steps=3 format=3 uid="uid://85sesn3q6r6n"]
 
+[ext_resource type="Script" uid="uid://c0kyp2dgsr6ig" path="res://Scripts/point_data.gd" id="1_7sut0"]
 [ext_resource type="Script" uid="uid://cre5vttc5fjip" path="res://Scenes/Stage/upgrade_buton_data.gd" id="1_gwf62"]
 
 [resource]
 script = ExtResource("1_gwf62")
-offset_y = 10.0
-max_words_per_line = 50
+_title_id = "UPGRADE_TITLE_1"
+_description_id = "UPGRADE_DESCRIPTION_1"
+points_data = Array[ExtResource("1_7sut0")]([null, null])
 metadata/_custom_type_script = "uid://cre5vttc5fjip"

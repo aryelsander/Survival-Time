@@ -10,24 +10,7 @@
 script = ExtResource("1_sv04b")
 frequency = 3.0
 
-[node name="TimeCountText" type="RichTextLabel" parent="."]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 777.0
-offset_right = 1143.0
-offset_bottom = 88.0
-grow_horizontal = 2
-theme_override_font_sizes/normal_font_size = 64
-bbcode_enabled = true
-text = "Time : 10.00"
-fit_content = true
-autowrap_mode = 0
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(961, 523)
 
 [node name="TimeToBossTimer" type="Node" parent="."]
 script = ExtResource("3_gqxi6")
@@ -38,22 +21,44 @@ metadata/_custom_type_script = "uid://bqguc4lmxea1i"
 [node name="SpawnManager" parent="." instance=ExtResource("2_rlq2x")]
 
 [node name="Player" parent="." instance=ExtResource("2_25205")]
-position = Vector2(960, 540)
+max_speed = 5.0
 acceleration_speed = 0.1
+shoot_distance_vision = 500.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("4_rlq2x")
 
+[node name="TimeCountText" type="RichTextLabel" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -183.0
+offset_top = -530.0
+offset_right = 183.0
+offset_bottom = -442.0
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "Time : 10.00"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+visible = false
 z_index = 1
 anchors_preset = -1
 anchor_left = 0.3
 anchor_top = 0.2
 anchor_right = 0.7
 anchor_bottom = 0.8
+offset_left = -576.0
+offset_top = -216.0
+offset_right = -576.0
+offset_bottom = -216.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3

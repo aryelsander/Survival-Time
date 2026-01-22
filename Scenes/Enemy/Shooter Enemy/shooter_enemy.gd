@@ -51,7 +51,7 @@ func shoot() -> void:
 	var bullet_instance : BaseBullet = bullet.instantiate()
 	get_tree().current_scene.add_child(bullet_instance)
 	bullet_instance.global_position = position
-	bullet_instance.setup(global_position,shoot_speed,target,enemy_data.base_damage,target_type)
+	bullet_instance.setup(1,global_position,shoot_speed,target,enemy_data.base_damage,target_type)
 
 
 func _pick_random_shoot_rotation() -> void:

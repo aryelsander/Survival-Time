@@ -4,8 +4,8 @@ class_name MagicBullet extends BaseBullet
 var _direction : Vector2
 var _scale : Vector2
 
-func setup(spawn_position : Vector2,speed : float,target : Node2D,damage : float,target_type : UnitType) -> void:
-	super(spawn_position,speed,target,damage,target_type)
+func setup(collision_quantity : int,spawn_position : Vector2,speed : float,target : Node2D,damage : float,target_type : UnitType) -> void:
+	super(collision_quantity,spawn_position,speed,target,damage,target_type)
 	_scale = scale
 	pulse_effect()
 	
