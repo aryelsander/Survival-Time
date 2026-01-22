@@ -12,3 +12,6 @@ MASTER_VOLUME,Volume Geral,Master Volume
 MUSIC,Música,Music
 SFX,Efeitos Sonoros,SFX
 BACK,Voltar,Back
+TITLE_CONFIRMATION_DIALOG,Confirme por favor,Please confirm
+TEXT_CONFIRMATION_DIALOG,Tem certeza que deseja continuar? Seus dados seram perdidos!,Are you sure you want to continue? All your data will be lost!
+ENTER_GAME_TEXT,SEGURE O ESPAÇO PARA COMEÇAR O JOGO,HOLD SPACE TO ENTER IN GAME

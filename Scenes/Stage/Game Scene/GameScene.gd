@@ -6,11 +6,12 @@ class_name GameScene extends Node2D
 @onready var time_to_boss_timer: GlobalTimer = $TimeToBossTimer
 @onready var time_count_text: RichTextLabel = $TimeCountText
 @onready var spawn_manager: SpawnManager = $SpawnManager
-
+@export var music : AudioStream
 @export var frequency : float
 
 var current_time_to_boss : float
 var player : Player
+
 func _ready() -> void:
 	GameManager.game_scene = self
 	set_time(current_time_to_boss)
@@ -20,7 +21,7 @@ func _ready() -> void:
 	player.get_closest_enemy_timer.wait_time = player.time_to_find_target
 	player.get_closest_enemy_timer.timeout.connect(get_enemy)
 	player.get_closest_enemy_timer.start()
-
+	AudioManager.play_music(music)
 func _process(_delta: float) -> void:
 	world_environment.environment.adjustment_saturation = clamp(GameManager.global_time_speed,0,1)
 	set_time(time_to_boss_timer.time_left)

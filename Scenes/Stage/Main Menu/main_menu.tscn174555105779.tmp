@@ -95,9 +95,3 @@ return_focus_control = NodePath("../MainMenu/VBoxContainer/SettingsButton")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("5_q1oxj")
-
-[node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
-oversampling_override = 1.0
-initial_position = 2
-size = Vector2i(800, 100)
-dialog_text = "Tem certeza que deseja continuar? Seus dados seram perdidos!"

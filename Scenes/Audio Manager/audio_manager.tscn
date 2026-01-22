@@ -6,5 +6,7 @@
 script = ExtResource("1_p44qs")
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"Music"
 
 [node name="FXPlayer" type="AudioStreamPlayer2D" parent="."]
+bus = &"FX"

@@ -9,8 +9,10 @@ signal change_language
 var configuration_data : ConfigurationData 
 const CURSOR_TEXTURE = preload("uid://yod0uftfb6qs")
 const CONFIGURATION_DATA_PATH := "user://configuration_data.tres"
+const SAVE_DATA_PATH := "user://save_dat.res"
 func _ready() -> void:
 	configuration_data = get_configuration_data()
+	save_data = get_save_game_data()
 	Input.set_custom_mouse_cursor(CURSOR_TEXTURE,Input.CURSOR_ARROW,Vector2(0,0))
 	if configuration_data.language.is_empty():
 		configuration_data.language = get_language_from_system()
@@ -18,6 +20,29 @@ func _ready() -> void:
 	else:
 		set_language(configuration_data.language)
 	change_language.emit()
+	
+func get_save_game_data() -> GameData:
+	if ResourceLoader.exists(SAVE_DATA_PATH):
+		var get_data  : GameData = ResourceLoader.load(SAVE_DATA_PATH) as GameData
+		print("Recuperou save game data")
+		print("Upgrades Salvos:")
+		for upgrade in get_data.upgrade_list:
+			print(upgrade)
+		return get_data
+	
+	var new_data : GameData = GameData.default()
+	print("Criou uma nova data")
+	save_game_data(new_data)
+	
+	return new_data
+
+func save_game_data(_save_data: GameData) -> void:
+	print("O que ta vindo: " + str(_save_data))
+	var error : Error = ResourceSaver.save(_save_data,SAVE_DATA_PATH)
+	if error == 0:
+		print("Salvo com sucesso")
+	pass
+
 func get_configuration_data() -> ConfigurationData:
 	if ResourceLoader.exists(CONFIGURATION_DATA_PATH):
 		var get_data  : ConfigurationData = ResourceLoader.load(CONFIGURATION_DATA_PATH) as ConfigurationData
@@ -28,6 +53,21 @@ func get_configuration_data() -> ConfigurationData:
 	
 	return new_data
 	
+
+func delete_save_game_data() -> bool:
+	if not ResourceLoader.exists(SAVE_DATA_PATH):
+		print("Não existe arquivo para deletar")
+		return false  # nada para deletar
+
+	var dir := DirAccess.open("user://")
+	if dir == null:
+		return false
+	
+	
+	dir.remove("save_dat.res")
+	print("Configuration Data Removido com sucesso!")
+	save_data = GameData.default()
+	return true
 
 func delete_configuration_data() -> bool:
 	if not ResourceLoader.exists(CONFIGURATION_DATA_PATH):

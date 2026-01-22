@@ -4,26 +4,48 @@ class_name UpgradeScene extends Node2D
 @export var min_zoom_camera : Vector2
 @export var max_zoom_camera : Vector2
 @onready var camera_2d: Camera2D = $Camera2D
-@onready var reset_button: Button = $CanvasLayer/ResetButton
 @onready var upgrade_button: UpgradeButton = $UpgradeButton
+@onready var world_environment: WorldEnvironment = $WorldEnvironment
+@onready var enter_game_text: RichTextLabel = $CanvasLayer/EnterGameText
+@onready var currency_text: RichTextLabel = $CanvasLayer/CurrencyText
 var scroll_speed : Vector2 = Vector2(0.1,0.1)
 var drag_speed : float = 1
 var last_mouse_pos : Vector2
 var dragging : bool
 var focused_control : Control
+var is_shaking : bool = false
+var hold_complete : float = 0.75
+var current_hold : float = 0
 func _ready() -> void:
-	default_position()
-	reset_button.pressed.connect(default_position)
 	upgrade_button.button.grab_focus()
+	update_ui()
 func _process(_delta: float) -> void:
-	#zoom_camera()
+	if Input.is_action_pressed("ui_select"):
+		shake_camera()
+		current_hold = clamp(current_hold + _delta,0,hold_complete)
+		if current_hold == hold_complete:
+			get_tree().change_scene_to_file("res://Scenes/Stage/Game Scene/game_scene.tscn")
+		
+		
+	if Input.is_action_just_released("ui_select"):
+		current_hold = 0
+		is_shaking = false
+		camera_2d.rotation = 0
+	if is_shaking: return
 	focused_control = get_viewport().gui_get_focus_owner()
 	if focused_control:
 		var get_upgrade_button : Control = focused_control.find_parent("PanelContainer").get_parent() as UpgradeButton
 		camera_2d.global_position = get_upgrade_button.global_position + get_upgrade_button.size / 2
 		get_upgrade_button.show_description()
 		
-		
+
+func update_ui() -> void:
+	currency_text.text = "[img widht=64 height=64]uid://vk01qri7gnda[/img] " + str(GameManager.save_data.currency)
+	enter_game_text.text = tr("ENTER_GAME_TEXT")
+
+func shake_camera() -> void:
+	camera_2d.rotate(0.1)
+	is_shaking = true
 func zoom_camera() -> void:
 	if Input.is_action_just_released("zoom_in"):
 		camera_2d.zoom = clamp(camera_2d.zoom + scroll_speed,min_zoom_camera,max_zoom_camera)
