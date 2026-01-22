@@ -49,6 +49,14 @@ text = "Icon: 0"
 horizontal_alignment = 2
 vertical_alignment = 1
 
+[node name="QuantityLabel" type="RichTextLabel" parent="PanelContainer/VBoxContainer/HeaderContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "0 / 10"
+horizontal_alignment = 2
+vertical_alignment = 1
+
 [node name="DescriptionContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
 visible = false
 layout_mode = 2

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Survival Time"
-run/main_scene="uid://baffyvu8l15kj"
+run/main_scene="uid://cvgp48j1c7btm"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 

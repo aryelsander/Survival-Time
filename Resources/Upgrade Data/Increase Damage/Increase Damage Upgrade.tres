@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="UpgradeEffectData" load_steps=10 format=3 uid="uid://b7tu4sdyppfdo"]
+
+[ext_resource type="Script" uid="uid://dg6o32xmr6pkh" path="res://Scripts/Upgrades/upgrade_effect_data.gd" id="1_bqs51"]
+[ext_resource type="Script" uid="uid://povnfkn4w8ui" path="res://Scripts/Upgrades/UpgradeData.gd" id="2_1l68j"]
+[ext_resource type="Script" uid="uid://c0kyp2dgsr6ig" path="res://Scripts/cost_data.gd" id="3_fcaas"]
+[ext_resource type="Script" uid="uid://cwxrufse2jn60" path="res://Scripts/Upgrades/resource_type_data.gd" id="4_avw8j"]
+[ext_resource type="Script" uid="uid://bujo7svb2op3g" path="res://Scripts/Upgrades/effect_data.gd" id="4_r7yle"]
+[ext_resource type="Resource" uid="uid://bshoknb1jv2vm" path="res://Resources/Upgrade Data/increase_damage.tres" id="6_avw8j"]
+
+[sub_resource type="Resource" id="Resource_fvrrs"]
+script = ExtResource("4_avw8j")
+metadata/_custom_type_script = "uid://cwxrufse2jn60"
+
+[sub_resource type="Resource" id="Resource_58vf0"]
+script = ExtResource("3_fcaas")
+resource_type = SubResource("Resource_fvrrs")
+value = 1
+metadata/_custom_type_script = "uid://c0kyp2dgsr6ig"
+
+[sub_resource type="Resource" id="Resource_fcaas"]
+script = ExtResource("2_1l68j")
+cost = Array[ExtResource("3_fcaas")]([SubResource("Resource_58vf0")])
+effects = Array[ExtResource("4_r7yle")]([ExtResource("6_avw8j")])
+metadata/_custom_type_script = "uid://povnfkn4w8ui"
+
+[resource]
+script = ExtResource("1_bqs51")
+upgrade_data = Array[ExtResource("2_1l68j")]([SubResource("Resource_fcaas")])
+metadata/_custom_type_script = "uid://dg6o32xmr6pkh"

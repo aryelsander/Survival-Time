@@ -2,7 +2,7 @@ class_name UpgradeButtonData extends Resource
 
 @export var _title_id : String
 @export var _description_id: String
-@export var points_data : Array[PointData]
+@export var points_data : UpgradeEffectData
 
 var get_description:
 	get:

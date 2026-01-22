@@ -3,7 +3,7 @@ extends Node
 var global_time_speed = 1
 var player : Player
 var game_scene : GameScene
-var points : int
+var save_data : GameData
 signal change_language
 
 var configuration_data : ConfigurationData 

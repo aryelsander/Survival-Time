@@ -7,6 +7,7 @@ class_name UpgradeButton extends Control
 @onready var button: Button = $PanelContainer/VBoxContainer/Button
 @onready var header_container: HBoxContainer = $PanelContainer/VBoxContainer/HeaderContainer
 @onready var description_container: HBoxContainer = $PanelContainer/VBoxContainer/DescriptionContainer
+@onready var quantity_label: RichTextLabel = $PanelContainer/VBoxContainer/HeaderContainer/QuantityLabel
 @export var right_button : UpgradeButton
 @export var left_button : UpgradeButton
 @export var down_button : UpgradeButton
@@ -38,6 +39,9 @@ func set_buttons() -> void:
 func update_ui() -> void:
 	title_label.text = upgrade_button_data.get_title_id
 	description_label.text = upgrade_button_data.get_description
+	quantity_label.text = "0/" + str(upgrade_button_data.points_data.upgrade_data.size())
+	if GameManager.points < upgrade_button_data.points_data.upgrade_data[0].cost[0].value:
+		button.disabled = true
 func show_description() -> void:
 	header_container.visible = true
 	description_container.visible = true

@@ -96,3 +96,7 @@ func blink() -> void:
 	.set_ease(Tween.EASE_IN)\
 	.set_trans(Tween.TRANS_LINEAR)
 	tween.play()
+
+#func stack_effect(effects: Array[StackEffect]) -> void:
+	#for effect in effects:
+		#
