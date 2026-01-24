@@ -34,6 +34,7 @@ func _on_spawn_time_timeout() -> void:
 	var enemy : BaseEnemy = get_random_enemy()
 	spawned_enemies.append(enemy)
 	enemy.spawn_manager = self
+	enemy.death.connect(game_scene.on_enemy_die)
 	get_tree().current_scene.add_child(enemy)
 	enemy.global_position = get_spawn_position()
 	pass

@@ -1,1 +1,0 @@
-class_name EffectData extends Resource

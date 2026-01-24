@@ -14,4 +14,9 @@ SFX,Efeitos Sonoros,SFX
 BACK,Voltar,Back
 TITLE_CONFIRMATION_DIALOG,Confirme por favor,Please confirm
 TEXT_CONFIRMATION_DIALOG,Tem certeza que deseja continuar? Seus dados seram perdidos!,Are you sure you want to continue? All your data will be lost!
-ENTER_GAME_TEXT,SEGURE O ESPAÇO PARA COMEÇAR O JOGO,HOLD SPACE TO ENTER IN GAME
+ENTER_GAME_TEXT,SEGURE O #button_3# PARA COMEÇAR O JOGO,HOLD #button_3# TO ENTER IN GAME
+BUY_UPGRADE_TEXT,PRESSIONE #button_2# PARA COMPRAR OS UPGRADES,PRESS #button_2# TO BUY UPGRADES
+PAUSED,Pausado,Paused
+RETRY,Tentar novamente,Retry
+UPGRADES,Atualizações,Upgrades
+MAIN_MENU,Menu Principal,Main Menu

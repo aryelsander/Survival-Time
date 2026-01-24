@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://dpbqfdvmt7max"]
+[gd_scene load_steps=3 format=3 uid="uid://dpbqfdvmt7max"]
 
 [ext_resource type="Script" uid="uid://v48ejj16sig1" path="res://Scenes/Stage/Upgrade Scene/Upgrade Button/upgrade_button.gd" id="1_5qdkr"]
-[ext_resource type="Resource" uid="uid://85sesn3q6r6n" path="res://Resources/Upgrade Button Data/Upgrade Button Data.tres" id="2_mx0q0"]
-[ext_resource type="Texture2D" uid="uid://vk01qri7gnda" path="res://Sprites/vfx/shield.png" id="3_fao0s"]
+
+[sub_resource type="Environment" id="Environment_fao0s"]
+background_mode = 3
+glow_enabled = true
 
 [node name="UpgradeButton" type="Control"]
 layout_mode = 3
@@ -12,9 +14,6 @@ offset_top = 1.0
 offset_right = 408.0
 offset_bottom = 451.0
 script = ExtResource("1_5qdkr")
-upgrade_button_data = ExtResource("2_mx0q0")
-icon_currency = ExtResource("3_fao0s")
-description_text = "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos."
 metadata/_edit_use_anchors_ = true
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
@@ -43,14 +42,6 @@ bbcode_enabled = true
 text = "Title Label"
 vertical_alignment = 1
 
-[node name="ValueLabel" type="RichTextLabel" parent="PanelContainer/VBoxContainer/HeaderContainer"]
-custom_minimum_size = Vector2(60, 0)
-layout_mode = 2
-bbcode_enabled = true
-text = "Icon: 0"
-horizontal_alignment = 2
-vertical_alignment = 1
-
 [node name="QuantityLabel" type="RichTextLabel" parent="PanelContainer/VBoxContainer/HeaderContainer"]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
@@ -68,10 +59,31 @@ theme_override_constants/separation = 64
 [node name="DescriptionLabel" type="RichTextLabel" parent="PanelContainer/VBoxContainer/DescriptionContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+bbcode_enabled = true
 text = "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos."
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Button" type="Button" parent="PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
-text = "Get"
+
+[node name="ButtonText" type="RichTextLabel" parent="PanelContainer/VBoxContainer/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -6.0
+offset_right = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "Hello World
+"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_fao0s")

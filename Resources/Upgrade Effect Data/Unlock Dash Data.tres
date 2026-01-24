@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="UnlockDashData" load_steps=2 format=3 uid="uid://ltqqawd5le7o"]
+
+[ext_resource type="Script" uid="uid://dosrafv128poo" path="res://Scripts/Upgrade Effect Data/unlock_dash_data.gd" id="1_5kd15"]
+
+[resource]
+script = ExtResource("1_5kd15")
+value = true
+upgrade_id = "unlock_dash"
+max_level = 1
+cost = 50.0
+factor = 1.0
+metadata/_custom_type_script = "uid://dosrafv128poo"

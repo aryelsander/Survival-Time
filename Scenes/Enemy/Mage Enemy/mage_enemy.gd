@@ -58,6 +58,10 @@ func shoot() -> void:
 	bullet_destroy_timer.wait_time = shoot_time_to_destroy
 	bullet_instance.add_child(bullet_destroy_timer)
 	bullet_destroy_timer.timeout.connect(func ():bullet_instance.queue_free())
+	bullet_instance.destroy.connect(destroy_bullet)
+func destroy_bullet(bullet: BaseBullet):
+	bullet.queue_free()
+
 
 func _pick_random_shoot_rotation() -> void:
 	rotation_direction = change_direction_probability.pickup_random().value

@@ -18,7 +18,7 @@ func _ready() -> void:
 func confirm_dialog() -> void:
 	GameManager.delete_save_game_data()
 	GameManager.get_save_game_data()
-	get_tree().change_scene_to_file.call_deferred("uid://cvgp48j1c7btm")
+	ChangeSceneManager.change_scene.call_deferred("uid://cvgp48j1c7btm")
 func close_dialog() -> void:
 	confirmation_dialog.hide()
 	
@@ -52,7 +52,7 @@ func _on_start_pressed() -> void:
 	#get_tree().change_scene_to_file("uid://cvgp48j1c7btm")
 	pass
 func _on_continue_pressed() -> void:
-	get_tree().change_scene_to_file("uid://cvgp48j1c7btm")
+	ChangeSceneManager.change_scene("uid://cvgp48j1c7btm")
 
 func _on_options_pressed() -> void:
 	options_menu.visible = true

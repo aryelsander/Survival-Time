@@ -1,33 +1,43 @@
 class_name UpgradeButton extends Control
 
 @export var upgrade_scene : UpgradeScene
+@export var requirements: Array[RequirementData]
 @export var upgrade_button_data : UpgradeButtonData
-@export var icon_currency: Texture2D
-@onready var title_label: RichTextLabel = $PanelContainer/VBoxContainer/HeaderContainer/TitleLabel
-@onready var value_label: RichTextLabel = $PanelContainer/VBoxContainer/HeaderContainer/ValueLabel
-@onready var description_label: RichTextLabel = $PanelContainer/VBoxContainer/DescriptionContainer/DescriptionLabel
-@onready var button: Button = $PanelContainer/VBoxContainer/Button
-@onready var header_container: HBoxContainer = $PanelContainer/VBoxContainer/HeaderContainer
-@onready var description_container: HBoxContainer = $PanelContainer/VBoxContainer/DescriptionContainer
-@onready var quantity_label: RichTextLabel = $PanelContainer/VBoxContainer/HeaderContainer/QuantityLabel
 @export var right_button : UpgradeButton
 @export var left_button : UpgradeButton
 @export var down_button : UpgradeButton
 @export var top_button : UpgradeButton
-@export var upgrade_count : int
-@export_multiline var description_text : String
+
+@onready var title_label: RichTextLabel = $PanelContainer/VBoxContainer/HeaderContainer/TitleLabel
+@onready var description_label: RichTextLabel = $PanelContainer/VBoxContainer/DescriptionContainer/DescriptionLabel
+@onready var header_container: HBoxContainer = $PanelContainer/VBoxContainer/HeaderContainer
+@onready var description_container: HBoxContainer = $PanelContainer/VBoxContainer/DescriptionContainer
+@onready var quantity_label: RichTextLabel = $PanelContainer/VBoxContainer/HeaderContainer/QuantityLabel
+@onready var button_text: RichTextLabel = $PanelContainer/VBoxContainer/Button/ButtonText
+@onready var button: Button = $PanelContainer/VBoxContainer/Button
+
+var upgrade_count : int
+var enable_to_buy : bool
+
 func _ready() -> void:
+	button_text.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	button.mouse_entered.connect(_on_mouse_entered)
 	button.mouse_exited.connect(_on_mouse_exited)
 	button.focus_entered.connect(show_description)
 	button.focus_exited.connect(hide_description)
 	button.pressed.connect(buy)
+	ControllerManager.change_controls.connect(update_ui)
 	GameManager.change_language.connect(update_ui)
 	call_deferred("set_buttons")
+	GameManager.save_data.increase.connect(update_ui)
+	upgrade_button_data.get_upgrade_effect()
+	upgrade_scene.on_buy_upgrade.connect(update_post_buy)
 	update_ui()
-	
 	pass
 
+func update_post_buy() -> void:
+	if requirements.is_empty(): return
+	update_ui()
 func set_buttons() -> void:
 	if right_button:
 		button.focus_neighbor_right = right_button.button.get_path()
@@ -36,67 +46,86 @@ func set_buttons() -> void:
 	if left_button:
 		button.focus_neighbor_left = left_button.button.get_path()
 	if down_button:
-		button.focus_neighbor_down = down_button.button.get_path()
+		button.focus_neighbor_bottom = down_button.button.get_path()
 	
+func check_requirements() -> bool:
+
+	if requirements.is_empty(): 
+		return true
+	
+	for requirement in requirements:
+		var require : bool = false
+		var id = requirement.upgrade_data.upgrade_id
+		for upgrade in GameManager.save_data.upgrade_list:
+			#var upgrade_save_data : UpgradeSaveData = GameManager.save_data.upgrade_list[index]
+			if upgrade.upgrade_id == id:
+				if upgrade.total_upgrade_buyed >= requirement.level_require:
+					require = true
+					break
+		if not require: 
+			return false
+	
+	return true
 
 func update_ui() -> void:
 	title_label.text = upgrade_button_data.get_title_id
 	description_label.text = upgrade_button_data.get_description
 	get_effect_count()	
-	quantity_label.text = str(upgrade_count ) + "/" + str(upgrade_button_data.points_data.upgrade_data.size())
+	quantity_label.text = str(upgrade_count ) + "/" + str(upgrade_button_data.upgrade_effect_data.max_level)
 
-	if upgrade_count < upgrade_button_data.points_data.upgrade_data.size():
-		value_label.text = "[img widht=16 height=16]uid://vk01qri7gnda[/img] " +str(upgrade_button_data.points_data.upgrade_data[upgrade_count].cost)
-		var currency : int = upgrade_button_data.points_data.upgrade_data[upgrade_count].cost
-		button.disabled = GameManager.save_data.currency < currency
+	if upgrade_count < upgrade_button_data.upgrade_effect_data.max_level:
+		if enable_to_buy:
+			button_text.text = "[img widht=16 height=16]uid://d0cad5bhnnlc6[/img] " + str(upgrade_button_data.upgrade_effect_data.calculate_cost())
+		else:
+			button_text.text = upgrade_button_data.get_title_id
+		var currency : float = upgrade_button_data.upgrade_effect_data.calculate_cost()
+		button.disabled = GameManager.save_data.currency < currency or not check_requirements()
 	else:
 		button.disabled = true
-		button.text = "MAX"
-	#if GameManager.points < upgrade_button_data.points_data.upgrade_data[0].cost[0].value:
-		#button.disabled = true
+		button_text.text = tr("MAX")
 
 func buy() -> void:
-	var currency : int = upgrade_button_data.points_data.upgrade_data[upgrade_count].cost
+	if not enable_to_buy:
+		return
+	
+	var currency : float = upgrade_button_data.upgrade_effect_data.calculate_cost()
 	if GameManager.save_data.currency >= currency:
 		GameManager.save_data.currency -= currency
-		add_upgrade()
+		#add_upgrade()
+		GameManager.save_data.increase_upgrade(upgrade_button_data.upgrade_reference_id)
 		update_ui()
+		upgrade_scene.on_buy_upgrade.emit()
 		upgrade_scene.update_ui()
-
-func add_upgrade() -> void:
-	for index in GameManager.save_data.upgrade_list.size():
-		if GameManager.save_data.upgrade_list[index].upgrade_id == upgrade_button_data.points_data.upgrade_id:
-			GameManager.save_data.upgrade_list[index].total_upgrade_buyed += 1
-			GameManager.save_game_data(GameManager.save_data)
-			print("Achou na lista e já incrementou")
-			return
-	
-	print("Criou porque é um upgrade novo")
-	GameManager.save_data.upgrade_list.append(UpgradeSaveData.create(upgrade_button_data.points_data.upgrade_id,1))
-	GameManager.save_game_data(GameManager.save_data)
-	print("Lista atualizada")
-	for upgrade in GameManager.save_data.upgrade_list:
-		print(upgrade.upgrade_id)
-	
 
 func get_effect_count() -> void:
 	for upgrade in GameManager.save_data.upgrade_list:
-		if upgrade.upgrade_id == upgrade_button_data.points_data.upgrade_id:
+		if upgrade.upgrade_id == upgrade_button_data.upgrade_reference_id:
 			upgrade_count = upgrade.total_upgrade_buyed
-			print("Achou upgrade comprado")
+			upgrade_button_data.upgrade_effect_data.current_level = upgrade.total_upgrade_buyed
 			return
-	print("Não achou upgrade")
+	upgrade_button_data.upgrade_effect_data.current_level = 0
+	
 	
 func show_description() -> void:
+	if upgrade_count < upgrade_button_data.upgrade_effect_data.max_level:
+		button_text.text = "[img widht=16 height=16]uid://d0cad5bhnnlc6[/img] " +str(upgrade_button_data.upgrade_effect_data.calculate_cost())
+	if upgrade_count == upgrade_button_data.upgrade_effect_data.max_level:
+		button_text.text = tr("MAX")
 	header_container.visible = true
 	description_container.visible = true
-	
+	enable_to_buy = true
 func hide_description() -> void:
+	if upgrade_count == upgrade_button_data.upgrade_effect_data.max_level:
+		button_text.text = tr("MAX")
+	else:
+		button_text.text = upgrade_button_data.get_title_id
 	header_container.visible = false
 	description_container.visible = false
+	enable_to_buy = false
 	
 func _on_mouse_entered() -> void:
-	show_description()	
+	show_description()
+	
 func _on_mouse_exited() -> void:
 	if has_focus(): return
 	hide_description()

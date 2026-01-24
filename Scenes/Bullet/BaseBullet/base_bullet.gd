@@ -18,7 +18,9 @@ func setup(collision_quantity : int,spawn_position : Vector2,speed : float,targe
 func on_collision_enemy() -> void:
 	_collision_quantity -=1
 	collision_enemy.emit(self)
-	print(_collision_quantity)
 	if _collision_quantity <= 0:
 		destroy.emit(self)
 	pass
+
+func on_collision_shield() -> void:
+	destroy.emit(self)

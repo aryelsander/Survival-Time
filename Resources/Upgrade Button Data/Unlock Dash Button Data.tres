@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="UpgradeButtonData" load_steps=2 format=3 uid="uid://q3cwtdurb0bp"]
+
+[ext_resource type="Script" uid="uid://cre5vttc5fjip" path="res://Scenes/Stage/Upgrade Scene/Upgrade Button/upgrade_buton_data.gd" id="1_cnsux"]
+
+[resource]
+script = ExtResource("1_cnsux")
+title_id = "UNLOCK_DASH_TITLE"
+description_id = "UNLOCK_DASH_DESCRIPTION"
+upgrade_reference_id = "unlock_dash"
+metadata/_custom_type_script = "uid://cre5vttc5fjip"

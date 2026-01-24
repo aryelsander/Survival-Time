@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bovdkik3pa1gb"]
+
+[ext_resource type="Script" uid="uid://3ni8non1rkw7" path="res://Scenes/Shield/shield.gd" id="1_5gqee"]
+[ext_resource type="Texture2D" uid="uid://vk01qri7gnda" path="res://Sprites/vfx/shield.png" id="2_2bg5c"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6sfd6"]
+radius = 15.0
+
+[node name="Shield" type="Area2D"]
+script = ExtResource("1_5gqee")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_6sfd6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_2bg5c")

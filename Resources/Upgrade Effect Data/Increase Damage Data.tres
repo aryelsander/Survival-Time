@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="IncreaseDamageData" load_steps=2 format=3 uid="uid://snhud27fudw0"]
+
+[ext_resource type="Script" uid="uid://da8iivu8uyphp" path="res://Scripts/Upgrade Effect Data/increase_damage_data.gd" id="1_y8srx"]
+
+[resource]
+script = ExtResource("1_y8srx")
+value = 1.0
+upgrade_id = "increase_damage"
+max_level = 30
+cost = 2.0
+factor = 2.0
+cost_based = 3
+metadata/_custom_type_script = "uid://da8iivu8uyphp"

@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="IncreaseDamage" load_steps=2 format=3 uid="uid://bshoknb1jv2vm"]
-
-[ext_resource type="Script" uid="uid://khsygyy6qo4i" path="res://Scripts/Upgrades/increase_damage_effect.gd" id="1_10cap"]
-
-[resource]
-script = ExtResource("1_10cap")
-value = 1
-metadata/_custom_type_script = "uid://khsygyy6qo4i"

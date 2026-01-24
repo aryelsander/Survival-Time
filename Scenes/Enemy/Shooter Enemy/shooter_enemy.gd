@@ -51,8 +51,11 @@ func shoot() -> void:
 	var bullet_instance : BaseBullet = bullet.instantiate()
 	get_tree().current_scene.add_child(bullet_instance)
 	bullet_instance.global_position = position
+	bullet_instance.destroy.connect(destroy_bullet)
 	bullet_instance.setup(1,global_position,shoot_speed,target,enemy_data.base_damage,target_type)
 
+func destroy_bullet(bullet: BaseBullet):
+	bullet.queue_free()
 
 func _pick_random_shoot_rotation() -> void:
 	rotation_direction = change_direction_probability.pickup_random().value

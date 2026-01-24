@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="IncreaseCurrencyMultiplierData" load_steps=2 format=3 uid="uid://ce1p0dlxb0w51"]
+
+[ext_resource type="Script" uid="uid://8r0dhls2neyv" path="res://Scripts/Upgrade Effect Data/increase_currency_multiplier_data.gd" id="1_gec2l"]
+
+[resource]
+script = ExtResource("1_gec2l")
+value = 0.3
+upgrade_id = "increase_currency_multiplier"
+max_level = 10
+cost = 20.0
+factor = 0.2
+cost_based = 3
+metadata/_custom_type_script = "uid://8r0dhls2neyv"

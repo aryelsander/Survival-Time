@@ -1,0 +1,72 @@
+[gd_scene load_steps=21 format=3 uid="uid://bvesh7qkch4hu"]
+
+[ext_resource type="Script" uid="uid://bpa3kt30d8v2n" path="res://controller_manager.gd" id="1_p2eix"]
+[ext_resource type="Texture2D" uid="uid://b8fg6du8nj5dm" path="res://Sprites/Controller Suport/Keyboard/f_keyboard.png" id="2_0j46o"]
+[ext_resource type="Script" uid="uid://b5gdtt5rm0e3q" path="res://Scenes/Global/ControllerManager/controller_data.gd" id="2_7gil6"]
+[ext_resource type="Texture2D" uid="uid://bgrw7fsdptp66" path="res://Sprites/Controller Suport/Keyboard/shift_keyboard.png" id="2_p5qnb"]
+[ext_resource type="Texture2D" uid="uid://8d5ewch636qh" path="res://Sprites/Controller Suport/Keyboard/space_keyboard.png" id="3_w1jso"]
+[ext_resource type="Texture2D" uid="uid://b56ih2153xdof" path="res://Sprites/Controller Suport/XBox/b_button.png" id="4_qpuvh"]
+[ext_resource type="Texture2D" uid="uid://bhi8lm7fklht0" path="res://Sprites/Controller Suport/Keyboard/a_keyboard.png" id="5_md4st"]
+[ext_resource type="Texture2D" uid="uid://cs6mfmu6ghjyb" path="res://Sprites/Controller Suport/Keyboard/s_keyboard.png" id="5_n6cvx"]
+[ext_resource type="Texture2D" uid="uid://c0hm41cax5ddf" path="res://Sprites/Controller Suport/Keyboard/d_keyboard.png" id="6_n6cvx"]
+[ext_resource type="Texture2D" uid="uid://luedcsdihh5o" path="res://Sprites/Controller Suport/Keyboard/w_keyboard.png" id="9_kam4r"]
+[ext_resource type="Texture2D" uid="uid://c6vk567yienbw" path="res://Sprites/Controller Suport/XBox/button_x.png" id="10_0b6qm"]
+[ext_resource type="Texture2D" uid="uid://8w2nyp0ev5ug" path="res://Sprites/Controller Suport/XBox/button_a.png" id="11_5rf3f"]
+[ext_resource type="Texture2D" uid="uid://sx2wdla1veae" path="res://Sprites/Controller Suport/XBox/joystick_down.png" id="13_mtupk"]
+[ext_resource type="Texture2D" uid="uid://bm24onetj1inh" path="res://Sprites/Controller Suport/XBox/joystick_left.png" id="14_vwxs3"]
+[ext_resource type="Texture2D" uid="uid://bbo3630jr7jr4" path="res://Sprites/Controller Suport/XBox/joystick_right.png" id="15_ddwlw"]
+[ext_resource type="Texture2D" uid="uid://cu50k1sthgvp5" path="res://Sprites/Controller Suport/XBox/joystick_up.png" id="16_ard6y"]
+
+[sub_resource type="Resource" id="Resource_yuelu"]
+script = ExtResource("2_7gil6")
+up_directional = ExtResource("9_kam4r")
+down_directional = ExtResource("5_n6cvx")
+left_directional = ExtResource("5_md4st")
+right_directional = ExtResource("6_n6cvx")
+button_1 = ExtResource("2_p5qnb")
+button_2 = ExtResource("3_w1jso")
+button_3 = ExtResource("2_0j46o")
+metadata/_custom_type_script = "uid://b5gdtt5rm0e3q"
+
+[sub_resource type="Resource" id="Resource_0j46o"]
+script = ExtResource("2_7gil6")
+controller_type = 1
+up_directional = ExtResource("16_ard6y")
+down_directional = ExtResource("13_mtupk")
+left_directional = ExtResource("14_vwxs3")
+right_directional = ExtResource("15_ddwlw")
+button_1 = ExtResource("10_0b6qm")
+button_2 = ExtResource("11_5rf3f")
+button_3 = ExtResource("4_qpuvh")
+metadata/_custom_type_script = "uid://b5gdtt5rm0e3q"
+
+[sub_resource type="Resource" id="Resource_7gil6"]
+script = ExtResource("2_7gil6")
+controller_type = 2
+up_directional = ExtResource("16_ard6y")
+down_directional = ExtResource("13_mtupk")
+left_directional = ExtResource("14_vwxs3")
+right_directional = ExtResource("15_ddwlw")
+button_1 = ExtResource("10_0b6qm")
+button_2 = ExtResource("11_5rf3f")
+button_3 = ExtResource("4_qpuvh")
+metadata/_custom_type_script = "uid://b5gdtt5rm0e3q"
+
+[sub_resource type="Resource" id="Resource_0b6qm"]
+script = ExtResource("2_7gil6")
+controller_type = 3
+up_directional = ExtResource("16_ard6y")
+down_directional = ExtResource("13_mtupk")
+left_directional = ExtResource("14_vwxs3")
+right_directional = ExtResource("15_ddwlw")
+button_1 = ExtResource("10_0b6qm")
+button_2 = ExtResource("11_5rf3f")
+button_3 = ExtResource("4_qpuvh")
+metadata/_custom_type_script = "uid://b5gdtt5rm0e3q"
+
+[node name="ControllerManager" type="Node"]
+script = ExtResource("1_p2eix")
+keyboard_and_mouse_controller_data = SubResource("Resource_yuelu")
+xbox_controller_data = SubResource("Resource_0j46o")
+playstation_controller_data = SubResource("Resource_7gil6")
+generic_controller_data = SubResource("Resource_0b6qm")

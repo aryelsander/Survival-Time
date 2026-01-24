@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="UpgradeButtonData" load_steps=2 format=3 uid="uid://dnn832usivo4"]
+
+[ext_resource type="Script" uid="uid://cre5vttc5fjip" path="res://Scenes/Stage/Upgrade Scene/Upgrade Button/upgrade_buton_data.gd" id="1_3oqfy"]
+
+[resource]
+script = ExtResource("1_3oqfy")
+title_id = "INCREASE_MAX_HEALTH_TITLE"
+description_id = "INCREASE_MAX_HEALTH_DESCRIPTION"
+upgrade_reference_id = "increase_max_health"
+metadata/_custom_type_script = "uid://cre5vttc5fjip"

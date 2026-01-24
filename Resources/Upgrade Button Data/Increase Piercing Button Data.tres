@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="UpgradeButtonData" load_steps=2 format=3 uid="uid://crqvy0qqd73yy"]
+
+[ext_resource type="Script" uid="uid://cre5vttc5fjip" path="res://Scenes/Stage/Upgrade Scene/Upgrade Button/upgrade_buton_data.gd" id="1_38xpq"]
+
+[resource]
+script = ExtResource("1_38xpq")
+title_id = "INCREASE_PIERCING_TITLE"
+description_id = "INCREASE_PIERCING_DESCRIPTION"
+upgrade_reference_id = "increase_piercing"
+metadata/_custom_type_script = "uid://cre5vttc5fjip"

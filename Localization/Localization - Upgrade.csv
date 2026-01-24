@@ -1,0 +1,16 @@
+KEYS,pt,en
+MAX,MÁXIMO,MAX
+INCREASE_DAMAGE_TITLE,Sobrecarga Balística,Ballistic Overdrive
+INCREASE_DAMAGE_DESCRIPTION,Aumenta a dano do tiro em #value# por level,Increases the shoot damage by #value# per level
+INCREASE_CURRENCY_MULTIPLIER_TITLE,Tempo é Dinheiro,Time is Money
+INCREASE_CURRENCY_MULTIPLIER_DESCRIPTION,Aumenta o multiplicador de [img widht=32 height=32]uid://d0cad5bhnnlc6[/img] em #value# por level,Increase [img widht=32 height=32]uid://d0cad5bhnnlc6[/img] multiplier by #value# per level
+INCREASE_INVULNERABLE_TIME_TITLE,Dimensão Paralela,Parallel Dimension
+INCREASE_INVULNERABLE_TIME_DESCRIPTION,Aumenta o tempo de invulnerabilidade em #value# por level,Increase invulnerable time by #value# per level
+INCREASE_MAX_HEALTH_TITLE,Sobrevida,Afterlife
+INCREASE_MAX_HEALTH_DESCRIPTION,Aumenta a vida máxima em #value# por level,Increase max health by #value# per level
+INCREASE_MAX_SPEED_TITLE,Força da Aceleração,Speed Force
+INCREASE_MAX_SPEED_DESCRIPTION,Aumenta velocidade máxima em #value# por level,Increase Max Speed by #value# per level
+INCREASE_PIERCING_TITLE,Rasgo Temporal,Temporal Rupture
+INCREASE_PIERCING_DESCRIPTION,Aumenta a quantidade de perfurações do disparo em #value# por level,Increases shot pierce count by #value# per level
+UNLOCK_DASH_TITLE,Velocidade da Luz,Light Speed
+UNLOCK_DASH_DESCRIPTION,Libera a esquiva. Pressione #button_1# para usar.,Unlock dash. Press #button_1# to use

@@ -1,12 +1,14 @@
 class_name UpgradeScene extends Node2D
+signal on_buy_upgrade
 
 @export var default_zoom_camera : Vector2
 @export var min_zoom_camera : Vector2
 @export var max_zoom_camera : Vector2
 @onready var camera_2d: Camera2D = $Camera2D
-@onready var upgrade_button: UpgradeButton = $UpgradeButton
+@export var initial_button: UpgradeButton
 @onready var world_environment: WorldEnvironment = $WorldEnvironment
 @onready var enter_game_text: RichTextLabel = $CanvasLayer/EnterGameText
+@onready var buy_upgrade_text: RichTextLabel = $CanvasLayer/BuyUpgradeText
 @onready var currency_text: RichTextLabel = $CanvasLayer/CurrencyText
 var scroll_speed : Vector2 = Vector2(0.1,0.1)
 var drag_speed : float = 1
@@ -17,17 +19,23 @@ var is_shaking : bool = false
 var hold_complete : float = 0.75
 var current_hold : float = 0
 func _ready() -> void:
-	upgrade_button.button.grab_focus()
+	initial_button.button.grab_focus()
 	update_ui()
+	ControllerManager.change_controls.connect(update_ui)
+
+func hack_add_currency() -> void:
+	GameManager.save_data.add_currency(1000)
+	update_ui()
+	
 func _process(_delta: float) -> void:
-	if Input.is_action_pressed("ui_select"):
+	if Input.is_action_pressed("button_3"):
 		shake_camera()
 		current_hold = clamp(current_hold + _delta,0,hold_complete)
 		if current_hold == hold_complete:
-			get_tree().change_scene_to_file("res://Scenes/Stage/Game Scene/game_scene.tscn")
+			ChangeSceneManager.change_scene("res://Scenes/Stage/Game Scene/game_scene.tscn")
+	
 		
-		
-	if Input.is_action_just_released("ui_select"):
+	if Input.is_action_just_released("button_3"):
 		current_hold = 0
 		is_shaking = false
 		camera_2d.rotation = 0
@@ -40,9 +48,9 @@ func _process(_delta: float) -> void:
 		
 
 func update_ui() -> void:
-	currency_text.text = "[img widht=64 height=64]uid://vk01qri7gnda[/img] " + str(GameManager.save_data.currency)
-	enter_game_text.text = tr("ENTER_GAME_TEXT")
-
+	currency_text.text = "[img widht=64 height=64]uid://d0cad5bhnnlc6[/img]" + str(GameManager.save_data.currency)
+	enter_game_text.text = ControllerManager.set_button_configuration(tr("ENTER_GAME_TEXT"),96)
+	buy_upgrade_text.text = ControllerManager.set_button_configuration(tr("BUY_UPGRADE_TEXT"),96)
 func shake_camera() -> void:
 	camera_2d.rotate(0.1)
 	is_shaking = true

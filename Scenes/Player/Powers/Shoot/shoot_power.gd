@@ -32,13 +32,11 @@ func create_pool() -> void:
 		disable(new_bullet)
 	
 func enable(base_bullet: BaseBullet) -> void:
-	print("Chamou enable")
 	
 	base_bullet.visible = true
 	base_bullet.process_mode = Node.PROCESS_MODE_INHERIT
 
 func disable(base_bullet: BaseBullet) -> void:
-	print("Chamou disable")
 	base_bullet.visible = false
 	base_bullet.process_mode = Node.PROCESS_MODE_DISABLED
 		

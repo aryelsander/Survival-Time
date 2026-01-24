@@ -7,4 +7,5 @@ script = ExtResource("1_kr4k1")
 base_health = 3.0
 base_speed = 1.0
 base_damage = 1.0
+base_currency = 1.0
 metadata/_custom_type_script = "uid://cqakae3ei1b8t"

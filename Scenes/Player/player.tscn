@@ -1,38 +1,53 @@
-[gd_scene load_steps=9 format=3 uid="uid://cyu7mqfll4rh7"]
+[gd_scene load_steps=13 format=3 uid="uid://cyu7mqfll4rh7"]
 
 [ext_resource type="Script" uid="uid://msoma1w0x1eg" path="res://Scenes/Player/player.gd" id="1_a3d8c"]
 [ext_resource type="Texture2D" uid="uid://dqv8snyl582pm" path="res://Sprites/Circle.png" id="1_uvnfx"]
 [ext_resource type="Resource" uid="uid://cuavrjvohel75" path="res://Resources/Unity Type/Player.tres" id="2_dd0ac"]
 [ext_resource type="Resource" uid="uid://dvoibx8tek078" path="res://Resources/Unity Type/Enemy.tres" id="3_0u5uq"]
+[ext_resource type="PackedScene" uid="uid://bovdkik3pa1gb" path="res://Scenes/Shield/shield.tscn" id="4_gk6dx"]
 [ext_resource type="PackedScene" uid="uid://dofe3q3xbhai2" path="res://Scenes/Player/Powers/Dash/dash_power.tscn" id="4_htcer"]
 [ext_resource type="PackedScene" uid="uid://cxgblyi7lltfb" path="res://Scenes/Player/Powers/Shoot/shoot_power.tscn" id="6_dd0ac"]
 [ext_resource type="Script" uid="uid://bqguc4lmxea1i" path="res://Addon/Global Timer/global_timer.gd" id="7_0u5uq"]
+[ext_resource type="Script" uid="uid://qe1wec45pfyp" path="res://Scenes/Player/health_bar.gd" id="10_jhyir"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ucd7u"]
 radius = 16.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gk6dx"]
+bg_color = Color(0.045159757, 0.043369442, 0.043369442, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jhyir"]
+bg_color = Color(0.5678866, 0.123350576, 0.23090373, 1)
+
 [node name="Player" type="Area2D"]
-modulate = Color(0, 0.5621891, 1, 1)
 script = ExtResource("1_a3d8c")
 max_speed = 10.0
 acceleration_speed = 1.0
 deceleration_speed = 0.1
 unit_type = ExtResource("2_dd0ac")
 target_type = ExtResource("3_0u5uq")
+max_hp = 5.0
 damage = 1.0
 shoot_speed = 10.0
-collision_quantity = 1
+piercing_shoot = 1
 time_to_find_target = 0.1
+invulnerable_time = 0.3
 blink_color = Color(0.10625774, 0.10625774, 0.10625774, 0.27450982)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0, 0.56078434, 1, 1)
 texture = ExtResource("1_uvnfx")
+
+[node name="Shield" parent="." instance=ExtResource("4_gk6dx")]
+scale = Vector2(5, 5)
+target_type = ExtResource("3_0u5uq")
+shield_size = 5.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ucd7u")
 
 [node name="DashPower" parent="." instance=ExtResource("4_htcer")]
-dash_speed = 20.0
+dash_speed = 15.0
 dash_effect_time = 0.1
 dash_refresh_time = 3.0
 
@@ -40,5 +55,21 @@ dash_refresh_time = 3.0
 shoot_time = 1.0
 
 [node name="GetClosestEnemyTimer" type="Node" parent="."]
+script = ExtResource("7_0u5uq")
+metadata/_custom_type_script = "uid://bqguc4lmxea1i"
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+offset_bottom = -24.0
+theme_override_styles/background = SubResource("StyleBoxFlat_gk6dx")
+theme_override_styles/fill = SubResource("StyleBoxFlat_jhyir")
+max_value = 1.0
+value = 1.0
+show_percentage = false
+script = ExtResource("10_jhyir")
+
+[node name="InvulnerableTimer" type="Node" parent="."]
 script = ExtResource("7_0u5uq")
 metadata/_custom_type_script = "uid://bqguc4lmxea1i"

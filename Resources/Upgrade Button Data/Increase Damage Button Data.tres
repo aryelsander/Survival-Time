@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="UpgradeButtonData" load_steps=2 format=3 uid="uid://85sesn3q6r6n"]
+
+[ext_resource type="Script" uid="uid://cre5vttc5fjip" path="res://Scenes/Stage/Upgrade Scene/Upgrade Button/upgrade_buton_data.gd" id="2_7sut0"]
+
+[resource]
+script = ExtResource("2_7sut0")
+title_id = "INCREASE_DAMAGE_TITLE"
+description_id = "INCREASE_DAMAGE_DESCRIPTION"
+upgrade_reference_id = "increase_damage"
+metadata/_custom_type_script = "uid://cre5vttc5fjip"

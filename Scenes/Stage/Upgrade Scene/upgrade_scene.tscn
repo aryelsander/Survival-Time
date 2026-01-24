@@ -1,8 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://cvgp48j1c7btm"]
+[gd_scene load_steps=16 format=3 uid="uid://cvgp48j1c7btm"]
 
 [ext_resource type="Script" uid="uid://dwm8dwlas3521" path="res://Scenes/Stage/Upgrade Scene/upgrade_scene.gd" id="1_tmfrm"]
 [ext_resource type="Texture2D" uid="uid://dqv8snyl582pm" path="res://Sprites/Circle.png" id="2_l8fdh"]
 [ext_resource type="PackedScene" uid="uid://dpbqfdvmt7max" path="res://Scenes/Stage/Upgrade Scene/Upgrade Button/upgrade_button.tscn" id="4_68e5o"]
+[ext_resource type="Resource" uid="uid://85sesn3q6r6n" path="res://Resources/Upgrade Button Data/Increase Damage Button Data.tres" id="5_hk8lk"]
+[ext_resource type="Resource" uid="uid://bjl3c0rhuffwj" path="res://Resources/Upgrade Button Data/Increase Currency Multiplier.tres" id="5_mps01"]
+[ext_resource type="Resource" uid="uid://cdaua5jsh8m1i" path="res://Resources/Upgrade Button Data/Increase Invulnerable Time Button Data.tres" id="6_hk8lk"]
+[ext_resource type="Resource" uid="uid://dnn832usivo4" path="res://Resources/Upgrade Button Data/Increase Max Health Button Data.tres" id="7_ro45f"]
+[ext_resource type="Resource" uid="uid://eh0vfleoievo" path="res://Resources/Upgrade Button Data/Increase Max Move Speed Button Data.tres" id="8_eguf2"]
+[ext_resource type="Resource" uid="uid://crqvy0qqd73yy" path="res://Resources/Upgrade Button Data/Increase Piercing Button Data.tres" id="9_5m753"]
+[ext_resource type="Resource" uid="uid://q3cwtdurb0bp" path="res://Resources/Upgrade Button Data/Unlock Dash Button Data.tres" id="10_xwi02"]
+[ext_resource type="Script" uid="uid://enebovch83vv" path="res://Scenes/Stage/Upgrade Scene/requirement_data.gd" id="11_cv6fa"]
+[ext_resource type="Resource" uid="uid://ltqqawd5le7o" path="res://Resources/Upgrade Effect Data/Unlock Dash Data.tres" id="12_cv6fa"]
+[ext_resource type="Resource" uid="uid://6q0asp804pam" path="res://Resources/Upgrade Button Data/Increase Reduction Dash Time Button Data.tres" id="13_wb566"]
 
 [sub_resource type="Environment" id="Environment_ffxli"]
 background_mode = 3
@@ -12,16 +22,22 @@ glow_intensity = 2.61
 glow_bloom = 0.35
 adjustment_enabled = true
 
-[node name="UpgradeScene" type="Node2D"]
+[sub_resource type="Resource" id="Resource_reri3"]
+script = ExtResource("11_cv6fa")
+upgrade_data = ExtResource("12_cv6fa")
+level_require = 1
+metadata/_custom_type_script = "uid://enebovch83vv"
+
+[node name="UpgradeScene" type="Node2D" node_paths=PackedStringArray("initial_button")]
 script = ExtResource("1_tmfrm")
 default_zoom_camera = Vector2(1, 1)
 min_zoom_camera = Vector2(0.5, 0.5)
 max_zoom_camera = Vector2(2, 2)
+initial_button = NodePath("IncreaseDamage")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 ignore_rotation = false
 position_smoothing_enabled = true
-position_smoothing_speed = 1.0
 rotation_smoothing_enabled = true
 rotation_smoothing_speed = 15.0
 
@@ -66,6 +82,29 @@ theme_override_font_sizes/bold_font_size = 64
 theme_override_font_sizes/bold_italics_font_size = 64
 theme_override_font_sizes/italics_font_size = 64
 theme_override_font_sizes/mono_font_size = 64
+bbcode_enabled = true
+text = "Hold"
+fit_content = true
+autowrap_mode = 0
+
+[node name="BuyUpgradeText" type="RichTextLabel" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -72.0
+offset_top = -223.0
+offset_right = 73.0
+offset_bottom = -135.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/normal_font_size = 64
+theme_override_font_sizes/bold_font_size = 64
+theme_override_font_sizes/bold_italics_font_size = 64
+theme_override_font_sizes/italics_font_size = 64
+theme_override_font_sizes/mono_font_size = 64
+bbcode_enabled = true
 text = "Hold"
 fit_content = true
 autowrap_mode = 0
@@ -73,9 +112,70 @@ autowrap_mode = 0
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ffxli")
 
-[node name="UpgradeButton" parent="." node_paths=PackedStringArray("upgrade_scene") instance=ExtResource("4_68e5o")]
-offset_left = -200.0
-offset_top = -225.0
-offset_right = 200.0
-offset_bottom = 225.0
+[node name="IncreaseDamage" parent="." node_paths=PackedStringArray("upgrade_scene", "right_button") instance=ExtResource("4_68e5o")]
+offset_left = -199.0
+offset_top = -203.0
+offset_right = 201.0
+offset_bottom = 247.0
 upgrade_scene = NodePath("..")
+upgrade_button_data = ExtResource("5_hk8lk")
+right_button = NodePath("../UnlockDash")
+
+[node name="IncreaseCurrencyMultiplier" parent="." node_paths=PackedStringArray("upgrade_scene") instance=ExtResource("4_68e5o")]
+offset_left = -632.0
+offset_top = -203.0
+offset_right = -232.0
+offset_bottom = 247.0
+upgrade_scene = NodePath("..")
+upgrade_button_data = ExtResource("5_mps01")
+
+[node name="IncreaseInvulnerableTime" parent="." node_paths=PackedStringArray("upgrade_scene") instance=ExtResource("4_68e5o")]
+offset_left = -1016.0
+offset_top = -203.0
+offset_right = -616.0
+offset_bottom = 247.0
+upgrade_scene = NodePath("..")
+upgrade_button_data = ExtResource("6_hk8lk")
+
+[node name="IncreaseMaxHealth" parent="." node_paths=PackedStringArray("upgrade_scene") instance=ExtResource("4_68e5o")]
+offset_left = -1407.0
+offset_top = -202.0
+offset_right = -1007.0
+offset_bottom = 248.0
+upgrade_scene = NodePath("..")
+upgrade_button_data = ExtResource("7_ro45f")
+
+[node name="IncreaseMaxMoveSpeed" parent="." node_paths=PackedStringArray("upgrade_scene") instance=ExtResource("4_68e5o")]
+offset_left = 165.0
+offset_top = -211.0
+offset_right = 565.0
+offset_bottom = 239.0
+upgrade_scene = NodePath("..")
+upgrade_button_data = ExtResource("8_eguf2")
+
+[node name="IncreasePiercing" parent="." node_paths=PackedStringArray("upgrade_scene") instance=ExtResource("4_68e5o")]
+offset_left = 667.0
+offset_top = -211.0
+offset_right = 1067.0
+offset_bottom = 239.0
+upgrade_scene = NodePath("..")
+upgrade_button_data = ExtResource("9_5m753")
+
+[node name="UnlockDash" parent="." node_paths=PackedStringArray("upgrade_scene", "top_button") instance=ExtResource("4_68e5o")]
+offset_left = 1232.0
+offset_top = -203.0
+offset_right = 1632.0
+offset_bottom = 247.0
+upgrade_scene = NodePath("..")
+upgrade_button_data = ExtResource("10_xwi02")
+top_button = NodePath("../IncreaseReductionDashTime")
+
+[node name="IncreaseReductionDashTime" parent="." node_paths=PackedStringArray("upgrade_scene", "down_button") instance=ExtResource("4_68e5o")]
+offset_left = 1226.0
+offset_top = -499.0
+offset_right = 1626.0
+offset_bottom = -49.0
+upgrade_scene = NodePath("..")
+requirements = Array[ExtResource("11_cv6fa")]([SubResource("Resource_reri3")])
+upgrade_button_data = ExtResource("13_wb566")
+down_button = NodePath("../UnlockDash")

@@ -3,6 +3,7 @@ extends Node
 var global_time_speed = 1
 var player : Player
 var game_scene : GameScene
+var player_bonus : PlayerBonusData
 var save_data : GameData
 signal change_language
 
@@ -11,6 +12,7 @@ const CURSOR_TEXTURE = preload("uid://yod0uftfb6qs")
 const CONFIGURATION_DATA_PATH := "user://configuration_data.tres"
 const SAVE_DATA_PATH := "user://save_dat.res"
 func _ready() -> void:
+	player_bonus = PlayerBonusData.new()
 	configuration_data = get_configuration_data()
 	save_data = get_save_game_data()
 	Input.set_custom_mouse_cursor(CURSOR_TEXTURE,Input.CURSOR_ARROW,Vector2(0,0))
@@ -20,27 +22,19 @@ func _ready() -> void:
 	else:
 		set_language(configuration_data.language)
 	change_language.emit()
-	
+
 func get_save_game_data() -> GameData:
 	if ResourceLoader.exists(SAVE_DATA_PATH):
 		var get_data  : GameData = ResourceLoader.load(SAVE_DATA_PATH) as GameData
-		print("Recuperou save game data")
-		print("Upgrades Salvos:")
-		for upgrade in get_data.upgrade_list:
-			print(upgrade)
 		return get_data
 	
 	var new_data : GameData = GameData.default()
-	print("Criou uma nova data")
 	save_game_data(new_data)
 	
 	return new_data
 
 func save_game_data(_save_data: GameData) -> void:
-	print("O que ta vindo: " + str(_save_data))
 	var error : Error = ResourceSaver.save(_save_data,SAVE_DATA_PATH)
-	if error == 0:
-		print("Salvo com sucesso")
 	pass
 
 func get_configuration_data() -> ConfigurationData:
@@ -56,8 +50,7 @@ func get_configuration_data() -> ConfigurationData:
 
 func delete_save_game_data() -> bool:
 	if not ResourceLoader.exists(SAVE_DATA_PATH):
-		print("Não existe arquivo para deletar")
-		return false  # nada para deletar
+		return false
 
 	var dir := DirAccess.open("user://")
 	if dir == null:
@@ -65,14 +58,13 @@ func delete_save_game_data() -> bool:
 	
 	
 	dir.remove("save_dat.res")
-	print("Configuration Data Removido com sucesso!")
 	save_data = GameData.default()
+	save_data.currency = 1000000
 	return true
 
 func delete_configuration_data() -> bool:
 	if not ResourceLoader.exists(CONFIGURATION_DATA_PATH):
-		print("Não existe arquivo para deletar")
-		return false  # nada para deletar
+		return false
 
 	var dir := DirAccess.open("user://")
 	if dir == null:
@@ -80,27 +72,19 @@ func delete_configuration_data() -> bool:
 	
 	
 	dir.remove("configuration_data.tres")
-	print("Configuration Data Removido com sucesso!")
 	return true
 
 func save_configuration_data(_configuration_data: ConfigurationData) -> void:
-	print("O que ta vindo: " + str(_configuration_data))
 	var error : Error = ResourceSaver.save(_configuration_data,CONFIGURATION_DATA_PATH)
-	if error == 0:
-			print("Salvo com sucesso")
 	pass
 	
 func set_language(language: String) -> void:
 	if language.begins_with("pt"):
 		TranslationServer.set_locale("pt")
 		GameManager.configuration_data.language = "pt"
-		print("Idioma em Português")
 	else:
 		TranslationServer.set_locale("en")
 		GameManager.configuration_data.language = "en"
-		
-		print("Idioma em Inglês")
-	
 	change_language.emit()	
 	
 func get_language_from_system() -> String:

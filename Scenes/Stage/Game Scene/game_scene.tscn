@@ -1,10 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://baffyvu8l15kj"]
+[gd_scene load_steps=11 format=3 uid="uid://baffyvu8l15kj"]
 
 [ext_resource type="Script" uid="uid://dajhau3ak3yrs" path="res://Scenes/Stage/Game Scene/GameScene.gd" id="1_sv04b"]
 [ext_resource type="PackedScene" uid="uid://cyu7mqfll4rh7" path="res://Scenes/Player/player.tscn" id="2_25205"]
 [ext_resource type="PackedScene" uid="uid://kk15sx7k0m2t" path="res://Scenes/Stage/Game Scene/Managers/Spawn Manager/spawn_manager.tscn" id="2_rlq2x"]
 [ext_resource type="Script" uid="uid://bqguc4lmxea1i" path="res://Addon/Global Timer/global_timer.gd" id="3_gqxi6"]
 [ext_resource type="Environment" uid="uid://b4now75hmvnx6" path="res://Resources/Environment/game_scene.tres" id="4_rlq2x"]
+[ext_resource type="Script" uid="uid://c3j3t48r1gdtc" path="res://Scenes/Stage/Game Scene/game_over_container.gd" id="6_k1sm0"]
+[ext_resource type="Script" uid="uid://chi2lv7kqfobg" path="res://Scenes/Stage/Game Scene/first_time_tutorial_game_scene.gd" id="7_r2aj3"]
+[ext_resource type="Script" uid="uid://cl73svtvuf57f" path="res://Scenes/Stage/Game Scene/pause_menu.gd" id="8_fpsds"]
+[ext_resource type="PackedScene" uid="uid://whwc31fcqlo8" path="res://Scenes/Stage/Options Menu/options_menu.tscn" id="9_cvyba"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_k1sm0"]
 
 [node name="GameScene" type="Node2D"]
 script = ExtResource("1_sv04b")
@@ -47,33 +53,188 @@ vertical_alignment = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+[node name="GameOverContainer" type="VBoxContainer" parent="CanvasLayer"]
+process_mode = 3
 visible = false
-z_index = 1
 anchors_preset = -1
 anchor_left = 0.3
 anchor_top = 0.2
 anchor_right = 0.7
 anchor_bottom = 0.8
-offset_left = -576.0
-offset_top = -216.0
-offset_right = -576.0
-offset_bottom = -216.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 3
+theme_override_constants/separation = 128
+alignment = 1
+script = ExtResource("6_k1sm0")
 
-[node name="Resume" type="Button" parent="CanvasLayer/VBoxContainer"]
+[node name="TotalCurrencyText" type="RichTextLabel" parent="CanvasLayer/GameOverContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 64
+theme_override_font_sizes/bold_font_size = 64
+theme_override_font_sizes/bold_italics_font_size = 64
+theme_override_font_sizes/italics_font_size = 64
+theme_override_font_sizes/mono_font_size = 64
+bbcode_enabled = true
+text = "Total: 0"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="RetryButton" type="Button" parent="CanvasLayer/GameOverContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_neighbor_top = NodePath("../BackToMainMenuButton")
+focus_neighbor_bottom = NodePath("../BackToUpgradesButton")
+focus_next = NodePath("../BackToUpgradesButton")
+focus_previous = NodePath("../BackToMainMenuButton")
+theme_override_font_sizes/font_size = 64
+text = "Retry"
+
+[node name="BackToUpgradesButton" type="Button" parent="CanvasLayer/GameOverContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_neighbor_top = NodePath("../RetryButton")
+focus_neighbor_bottom = NodePath("../BackToMainMenuButton")
+focus_next = NodePath("../BackToMainMenuButton")
+focus_previous = NodePath("../RetryButton")
+theme_override_font_sizes/font_size = 64
+text = "Upgrades"
+
+[node name="BackToMainMenuButton" type="Button" parent="CanvasLayer/GameOverContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_neighbor_top = NodePath("../BackToUpgradesButton")
+focus_neighbor_bottom = NodePath("../RetryButton")
+focus_next = NodePath("../RetryButton")
+focus_previous = NodePath("../BackToUpgradesButton")
+theme_override_font_sizes/font_size = 64
+text = "Main Menu"
+
+[node name="FirstTimeTutorial" type="TextureRect" parent="CanvasLayer"]
+process_mode = 3
+visible = false
+modulate = Color(0.3438608, 0.3438608, 0.3438608, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_k1sm0")
+script = ExtResource("7_r2aj3")
+
+[node name="Up" type="RichTextLabel" parent="CanvasLayer/FirstTimeTutorial"]
+layout_mode = 0
+offset_left = 331.0
+offset_top = 313.0
+offset_right = 371.0
+offset_bottom = 359.0
+bbcode_enabled = true
+text = "#up#"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Down" type="RichTextLabel" parent="CanvasLayer/FirstTimeTutorial"]
+layout_mode = 0
+offset_left = 323.0
+offset_top = 474.0
+offset_right = 363.0
+offset_bottom = 520.0
+bbcode_enabled = true
+text = "#down#"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Left" type="RichTextLabel" parent="CanvasLayer/FirstTimeTutorial"]
+layout_mode = 0
+offset_left = 188.0
+offset_top = 372.0
+offset_right = 228.0
+offset_bottom = 418.0
+bbcode_enabled = true
+text = "#left#"
+fit_content = true
+autowrap_mode = 0
+
+[node name="RIght" type="RichTextLabel" parent="CanvasLayer/FirstTimeTutorial"]
+layout_mode = 0
+offset_left = 430.0
+offset_top = 310.0
+offset_right = 470.0
+offset_bottom = 356.0
+bbcode_enabled = true
+text = "#right#"
+fit_content = true
+autowrap_mode = 0
+
+[node name="FinishButton" type="Button" parent="CanvasLayer/FirstTimeTutorial"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -8.0
+offset_right = 4.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
+theme_override_colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_font_sizes/font_size = 64
+text = "GOT IT!"
+
+[node name="PauseMenu" type="VBoxContainer" parent="CanvasLayer"]
+process_mode = 3
+visible = false
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.2
+anchor_right = 0.7
+anchor_bottom = 0.8
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 32
+alignment = 1
+script = ExtResource("8_fpsds")
+
+[node name="GamePausedText" type="RichTextLabel" parent="CanvasLayer/PauseMenu"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 64
+theme_override_font_sizes/bold_font_size = 64
+theme_override_font_sizes/bold_italics_font_size = 64
+theme_override_font_sizes/italics_font_size = 6
+theme_override_font_sizes/mono_font_size = 4
+bbcode_enabled = true
+text = "Game Paused"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContinueButton" type="Button" parent="CanvasLayer/PauseMenu"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 64
+text = "Continue"
+
+[node name="SettingsButton" type="Button" parent="CanvasLayer/PauseMenu"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
-text = "Start"
 
-[node name="Button2" type="Button" parent="CanvasLayer/VBoxContainer"]
+[node name="BackToUpgradeButton" type="Button" parent="CanvasLayer/PauseMenu"]
 layout_mode = 2
+size_flags_vertical = 3
 theme_override_font_sizes/font_size = 64
-text = "Start"
+text = "Back to Upgrade"
 
-[node name="Button3" type="Button" parent="CanvasLayer/VBoxContainer"]
+[node name="BackToMainMenu" type="Button" parent="CanvasLayer/PauseMenu"]
 layout_mode = 2
+size_flags_vertical = 3
 theme_override_font_sizes/font_size = 64
-text = "Start"
+text = "Back to Main Menu"
+
+[node name="OptionsMenu" parent="CanvasLayer" node_paths=PackedStringArray("return_focus_control") instance=ExtResource("9_cvyba")]
+return_focus_control = NodePath("../PauseMenu/SettingsButton")

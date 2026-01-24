@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="IncreaseMaxMoveSpeedData" load_steps=2 format=3 uid="uid://cl8uecg34ov1y"]
+
+[ext_resource type="Script" uid="uid://cner2xd6e0lbv" path="res://Scripts/Upgrade Effect Data/increase_max_move_speed_data.gd" id="1_0rd8i"]
+
+[resource]
+script = ExtResource("1_0rd8i")
+value = 5.0
+upgrade_id = "increase_max_move_speed"
+max_level = 20
+cost = 20.0
+factor = 1.0
+cost_based = 3
+metadata/_custom_type_script = "uid://cner2xd6e0lbv"

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="IncreaseReductionDashTimeData" load_steps=2 format=3 uid="uid://o8baxq2c1lp"]
+
+[ext_resource type="Script" uid="uid://caqif6rly6iwu" path="res://Scripts/Upgrade Effect Data/increase_reduction_dash_time.gd" id="1_7t6hc"]
+
+[resource]
+script = ExtResource("1_7t6hc")
+value = 1.0
+upgrade_id = "increase_reduction_dash_time"
+max_level = 10
+cost = 30.0
+factor = 1.0
+cost_based = 3
+metadata/_custom_type_script = "uid://caqif6rly6iwu"
