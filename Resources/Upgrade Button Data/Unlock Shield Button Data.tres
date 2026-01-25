@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="UpgradeButtonData" load_steps=2 format=3 uid="uid://khf18pd0fne"]
+
+[ext_resource type="Script" uid="uid://cre5vttc5fjip" path="res://Scenes/Stage/Upgrade Scene/Upgrade Button/upgrade_buton_data.gd" id="1_mg3x2"]
+
+[resource]
+script = ExtResource("1_mg3x2")
+title_id = "UNLOCK_SHIELD_TITLE"
+description_id = "UNLOCK_SHIELD_DESCRIPTION"
+upgrade_reference_id = "unlock_shield"
+metadata/_custom_type_script = "uid://cre5vttc5fjip"

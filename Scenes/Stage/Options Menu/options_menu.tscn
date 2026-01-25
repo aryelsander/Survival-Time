@@ -33,6 +33,10 @@ bg_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uqmrb"]
 bg_color = Color(1, 1, 1, 1)
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
 
 [node name="OptionsMenu" type="Panel"]
 process_mode = 3
@@ -54,6 +58,7 @@ anchor_right = 1.0
 anchor_bottom = 0.9
 grow_horizontal = 2
 grow_vertical = 2
+rotation = 0.0015190677
 theme_override_styles/panel = SubResource("StyleBoxFlat_7nexd")
 horizontal_scroll_mode = 0
 

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="IncreaseReductionShootTimeData" load_steps=2 format=3 uid="uid://cdsu00qmme2kq"]
+
+[ext_resource type="Script" uid="uid://dkr6s8tfrlxue" path="res://Scripts/Upgrade Effect Data/increase_reduction_shoot_time_data.gd" id="1_3du1k"]
+
+[resource]
+script = ExtResource("1_3du1k")
+value = 0.1
+upgrade_id = "increase_reduction_shoot_time"
+max_level = 10
+cost = 100.0
+cost_based = 3
+metadata/_custom_type_script = "uid://dkr6s8tfrlxue"

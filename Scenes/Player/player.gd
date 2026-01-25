@@ -25,6 +25,8 @@ signal die
 @onready var health_bar: HealthBar = $HealthBar
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var invulnerable_timer: GlobalTimer = $InvulnerableTimer
+@onready var shield_bar: HealthBar = $ShieldBar
+@onready var dash_bar: HealthBar = $DashBar
 var current_hp : float
 var game_scene : GameScene
 var current_speed : float
@@ -37,11 +39,11 @@ var color : Color
 var base_invulnerable_time : float
 var invulnerable_tween : Tween
 var unlock_dash : bool = false
+var unlock_shield : bool = false
 func _ready() -> void:
 	color = modulate
 	GameManager.player = self
 	area_entered.connect(_on_area_entered)
-	
 	dash_power.dash_effect_timer.started.connect(dash)
 	shoot_power.shoot_timer.timeout.connect(_on_shoot)
 	dash_power.dash_effect_timer.completed.connect(exit_dash)
@@ -65,9 +67,36 @@ func set_bonus() -> void:
 	piercing_shoot += GameManager.player_bonus.bonus_piercing
 	invulnerable_timer.wait_time = invulnerable_time + GameManager.player_bonus.bonus_invulnerable_time
 	unlock_dash = GameManager.player_bonus.unlocked_dash
+	unlock_shield = GameManager.player_bonus.unlocked_shield
+	shield.shield_time += GameManager.player_bonus.bonus_shield_time
+	dash_bar.visible = false
+	shoot_power.shoot_timer.wait_time -= GameManager.player_bonus.bonus_shoot_wait_time
+	dash_power.dash_speed += GameManager.player_bonus.bonus_dash_speed
 	
 func bounds() -> void:
-	position = clamp(position,0,get_viewport().get_visible_rect().size)
+	var cam := get_viewport().get_camera_2d()
+	if cam == null:
+		return
+
+	var screen_size = get_viewport_rect().size
+	var zoom = cam.zoom
+
+	var half_width  = (screen_size.x * zoom.x) / 2
+	var half_height = (screen_size.y * zoom.y) / 2
+
+	var cam_pos = cam.global_position
+
+	global_position.x = clamp(
+		global_position.x,
+		cam_pos.x - half_width + (collision_shape_2d.shape.radius),
+		cam_pos.x + half_width - (collision_shape_2d.shape.radius )
+	)
+
+	global_position.y = clamp(
+		global_position.y,
+		cam_pos.y - half_height + (collision_shape_2d.shape.radius),
+		cam_pos.y + half_height - (collision_shape_2d.shape.radius)
+	)
 
 func on_collision_bullet(bullet : BaseBullet) -> void:
 	if bullet._target_type == unit_type:
@@ -80,17 +109,30 @@ func _on_shoot() -> void:
 	bullet_instance.global_position = position
 	bullet_instance.setup(piercing_shoot,global_position,shoot_speed,target,damage,target_type)
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	get_target()
 	direction = Input.get_vector("move_left","move_right","move_up","move_down")
 	
 	if Input.is_action_just_pressed("button_1") and dash_power.can_dash and unlock_dash:
 		dash_power.dash_effect_timer.start()
-	if Input.is_action_just_pressed("button_2"):
-		shield.enable_shield()
-	elif Input.is_action_just_released("button_2"):
-		shield.disable_shield()
-		
+	#if Input.is_action_just_pressed("button_2") and unlock_shield:
+		#shield.enable_shield()
+	#elif Input.is_action_just_released("button_2"):
+		#shield.disable_shield()
+	var enable_shield : bool = unlock_shield and Input.is_action_pressed("button_2")
+	shield.use_shield(delta,enable_shield)
+	if shield.current_shield_time == shield.shield_time:
+		shield_bar.visible = false
+	else:
+		shield_bar.visible = true
+		shield_bar.update_bar(shield.current_shield_time / shield.shield_time)
+	
+	if dash_power.dash_refresh_timer.wait_time == dash_power.dash_refresh_timer.time_elapsed:
+		dash_bar.visible = false
+	else:
+		dash_bar.visible = true
+		dash_bar.update_bar(dash_power.dash_refresh_timer.time_elapsed / dash_power.dash_refresh_timer.wait_time)
+	
 	if direction.length() != 0:
 		current_speed = move_toward(current_speed,current_max_speed,acceleration_speed)
 		current_velocity = current_speed * direction
@@ -102,6 +144,7 @@ func _process(_delta: float) -> void:
 	
 func _physics_process(_delta: float) -> void:
 	position += current_velocity * GameManager.global_time_speed
+	bounds()
 
 func dash() -> void:
 	current_max_speed = dash_power.dash_speed

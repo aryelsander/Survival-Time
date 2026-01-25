@@ -5,7 +5,7 @@ class_name MainMenu extends Control
 @onready var settings_button: Button = $VBoxContainer/SettingsButton
 @onready var options_menu: OptionsMenu = $"../OptionsMenu"
 @onready var confirmation_dialog: ConfirmationDialog = $"../ConfirmationDialog"
-
+@export var music: AudioStream
 func _ready() -> void:
 	initialize()
 	GameManager.change_language.connect(update_ui)
@@ -14,6 +14,7 @@ func _ready() -> void:
 	confirmation_dialog.go_back_requested.connect(close_dialog)
 	confirmation_dialog.canceled.connect(close_dialog)
 	confirmation_dialog.confirmed.connect(confirm_dialog)
+	AudioManager.play_music(music)
 
 func confirm_dialog() -> void:
 	GameManager.delete_save_game_data()

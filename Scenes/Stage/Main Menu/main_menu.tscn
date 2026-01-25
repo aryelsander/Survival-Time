@@ -1,8 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://b38r8med5cvwg"]
+[gd_scene load_steps=7 format=3 uid="uid://b38r8med5cvwg"]
 
 [ext_resource type="Script" uid="uid://dmljis8ggyyjq" path="res://Scenes/Stage/Main Menu/main_menu.gd" id="1_1vjg2"]
+[ext_resource type="AudioStream" uid="uid://b6meyi7wd4nou" path="res://Music/Survival Time Menu Music.ogg" id="2_2apdb"]
 [ext_resource type="PackedScene" uid="uid://whwc31fcqlo8" path="res://Scenes/Stage/Options Menu/options_menu.tscn" id="2_j3nt2"]
 [ext_resource type="Environment" uid="uid://b4now75hmvnx6" path="res://Resources/Environment/game_scene.tres" id="5_q1oxj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2apdb"]
+bg_color = Color(0.0587371, 0.0587371, 0.0587371, 1)
+
+[sub_resource type="Theme" id="Theme_tw3pt"]
+AcceptDialog/constants/buttons_min_height = 32
+AcceptDialog/constants/buttons_min_width = 128
+AcceptDialog/constants/buttons_separation = 10
+AcceptDialog/font_sizes/title_font_size = 24
+AcceptDialog/styles/panel = SubResource("StyleBoxFlat_2apdb")
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -20,6 +31,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_1vjg2")
+music = ExtResource("2_2apdb")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainMenu"]
 layout_mode = 1
@@ -99,5 +111,6 @@ environment = ExtResource("5_q1oxj")
 [node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
 oversampling_override = 1.0
 initial_position = 2
-size = Vector2i(800, 100)
+size = Vector2i(800, 161)
+theme = SubResource("Theme_tw3pt")
 dialog_text = "Tem certeza que deseja continuar? Seus dados seram perdidos!"

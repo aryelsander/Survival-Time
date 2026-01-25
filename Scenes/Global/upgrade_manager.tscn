@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://diot1aquyblht"]
+[gd_scene load_steps=15 format=3 uid="uid://diot1aquyblht"]
 
 [ext_resource type="Script" uid="uid://b700q81rs6h4n" path="res://upgrade_manager.gd" id="1_wbr1n"]
 [ext_resource type="Script" uid="uid://dg6o32xmr6pkh" path="res://Scripts/Upgrade Effect Data/upgrade_effect_data.gd" id="2_f1xec"]
@@ -10,7 +10,11 @@
 [ext_resource type="Resource" uid="uid://6hfagad2nflo" path="res://Resources/Upgrade Effect Data/Increase Piercing Data.tres" id="8_irdpk"]
 [ext_resource type="Resource" uid="uid://ltqqawd5le7o" path="res://Resources/Upgrade Effect Data/Unlock Dash Data.tres" id="9_xs113"]
 [ext_resource type="Resource" uid="uid://o8baxq2c1lp" path="res://Resources/Upgrade Effect Data/Increase Reduction Dash Time.tres" id="10_y6kfm"]
+[ext_resource type="Resource" uid="uid://c3xccttc0ngd6" path="res://Resources/Upgrade Effect Data/Unlock Shield Data.tres" id="11_e2673"]
+[ext_resource type="Resource" uid="uid://dwwue1alvp5ud" path="res://Resources/Upgrade Effect Data/Increase Shield Time Data.tres" id="12_sn44c"]
+[ext_resource type="Resource" uid="uid://cdsu00qmme2kq" path="res://Resources/Upgrade Effect Data/Increase Reduction Shoot Time Data.tres" id="13_o0dxv"]
+[ext_resource type="Resource" uid="uid://drn3xblwgqxgr" path="res://Resources/Upgrade Effect Data/Increase Dash Speed Data.tres" id="14_xvufr"]
 
 [node name="UpgradeManager" type="Node"]
 script = ExtResource("1_wbr1n")
-effects = Array[ExtResource("2_f1xec")]([ExtResource("3_wa3rd"), ExtResource("4_vr2v1"), ExtResource("5_fn36b"), ExtResource("6_pio44"), ExtResource("7_5763y"), ExtResource("8_irdpk"), ExtResource("9_xs113"), ExtResource("10_y6kfm")])
+effects = Array[ExtResource("2_f1xec")]([ExtResource("3_wa3rd"), ExtResource("4_vr2v1"), ExtResource("5_fn36b"), ExtResource("6_pio44"), ExtResource("7_5763y"), ExtResource("8_irdpk"), ExtResource("9_xs113"), ExtResource("10_y6kfm"), ExtResource("11_e2673"), ExtResource("12_sn44c"), ExtResource("13_o0dxv"), ExtResource("14_xvufr")])

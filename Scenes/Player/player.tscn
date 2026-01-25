@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cyu7mqfll4rh7"]
+[gd_scene load_steps=16 format=3 uid="uid://cyu7mqfll4rh7"]
 
 [ext_resource type="Script" uid="uid://msoma1w0x1eg" path="res://Scenes/Player/player.gd" id="1_a3d8c"]
 [ext_resource type="Texture2D" uid="uid://dqv8snyl582pm" path="res://Sprites/Circle.png" id="1_uvnfx"]
@@ -11,13 +11,21 @@
 [ext_resource type="Script" uid="uid://qe1wec45pfyp" path="res://Scenes/Player/health_bar.gd" id="10_jhyir"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ucd7u"]
-radius = 16.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_74mp2"]
+bg_color = Color(0.045159757, 0.043369442, 0.043369442, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oikmp"]
+bg_color = Color(0.5678866, 0.123350576, 0.23090373, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gk6dx"]
 bg_color = Color(0.045159757, 0.043369442, 0.043369442, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jhyir"]
-bg_color = Color(0.5678866, 0.123350576, 0.23090373, 1)
+bg_color = Color(0.3624049, 0.5851232, 0.7443918, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_06tpx"]
+bg_color = Color(0.7715464, 0.42520788, 0.14221707, 1)
 
 [node name="Player" type="Area2D"]
 script = ExtResource("1_a3d8c")
@@ -42,6 +50,11 @@ texture = ExtResource("1_uvnfx")
 scale = Vector2(5, 5)
 target_type = ExtResource("3_0u5uq")
 shield_size = 5.0
+shield_time = 10.0
+spend_shield_time = 0.1
+current_shield_time = 10.0
+recovery_shield_time = 0.01
+overcharge_factor = 3.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ucd7u")
@@ -63,8 +76,32 @@ offset_left = -20.0
 offset_top = -40.0
 offset_right = 20.0
 offset_bottom = -24.0
+theme_override_styles/background = SubResource("StyleBoxFlat_74mp2")
+theme_override_styles/fill = SubResource("StyleBoxFlat_oikmp")
+max_value = 1.0
+value = 1.0
+show_percentage = false
+script = ExtResource("10_jhyir")
+
+[node name="ShieldBar" type="ProgressBar" parent="."]
+offset_left = -20.0
+offset_top = 30.0
+offset_right = 20.0
+offset_bottom = 46.0
 theme_override_styles/background = SubResource("StyleBoxFlat_gk6dx")
 theme_override_styles/fill = SubResource("StyleBoxFlat_jhyir")
+max_value = 1.0
+value = 1.0
+show_percentage = false
+script = ExtResource("10_jhyir")
+
+[node name="DashBar" type="ProgressBar" parent="."]
+offset_left = -20.0
+offset_top = 46.0
+offset_right = 20.0
+offset_bottom = 62.0
+theme_override_styles/background = SubResource("StyleBoxFlat_gk6dx")
+theme_override_styles/fill = SubResource("StyleBoxFlat_06tpx")
 max_value = 1.0
 value = 1.0
 show_percentage = false

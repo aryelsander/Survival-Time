@@ -11,8 +11,12 @@ class_name DashPower extends Node
 @onready var dash_refresh_timer: GlobalTimer = $DashRefresh
 
 func _ready() -> void:
+	
 	dash_effect_timer.wait_time = dash_effect_time
-	dash_refresh_timer.wait_time = dash_refresh_time
+	dash_refresh_timer.wait_time = dash_refresh_time - GameManager.player_bonus.bonus_dash_wait_time
+	dash_refresh_timer._current_time = dash_refresh_timer.wait_time
+	
+	
 	dash_effect_timer.started.connect(_on_dash_effect_start)
 	dash_effect_timer.completed.connect(_on_dash_effect_completed)
 	dash_refresh_timer.completed.connect(_on_dash_refresh_completed)

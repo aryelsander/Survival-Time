@@ -7,6 +7,7 @@ class_name UpgradeButton extends Control
 @export var left_button : UpgradeButton
 @export var down_button : UpgradeButton
 @export var top_button : UpgradeButton
+@onready var panel_container: PanelContainer = %PanelContainer
 
 @onready var title_label: RichTextLabel = $PanelContainer/VBoxContainer/HeaderContainer/TitleLabel
 @onready var description_label: RichTextLabel = $PanelContainer/VBoxContainer/DescriptionContainer/DescriptionLabel
@@ -18,8 +19,11 @@ class_name UpgradeButton extends Control
 
 var upgrade_count : int
 var enable_to_buy : bool
-
+var style : StyleBoxFlat
 func _ready() -> void:
+	style = panel_container.get_theme_stylebox("panel").duplicate()
+	panel_container.add_theme_stylebox_override("panel",style)
+	
 	button_text.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	button.mouse_entered.connect(_on_mouse_entered)
 	button.mouse_exited.connect(_on_mouse_exited)
@@ -114,6 +118,9 @@ func show_description() -> void:
 	header_container.visible = true
 	description_container.visible = true
 	enable_to_buy = true
+	style.draw_center = true
+	style.border_color = Color.WHITE
+	#style.draw_center = true
 func hide_description() -> void:
 	if upgrade_count == upgrade_button_data.upgrade_effect_data.max_level:
 		button_text.text = tr("MAX")
@@ -122,7 +129,8 @@ func hide_description() -> void:
 	header_container.visible = false
 	description_container.visible = false
 	enable_to_buy = false
-	
+	style.draw_center = false
+	style.border_color = Color.TRANSPARENT
 func _on_mouse_entered() -> void:
 	show_description()
 	

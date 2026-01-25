@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="UpgradeButtonData" load_steps=2 format=3 uid="uid://b24oecsslsq1"]
+
+[ext_resource type="Script" uid="uid://cre5vttc5fjip" path="res://Scenes/Stage/Upgrade Scene/Upgrade Button/upgrade_buton_data.gd" id="1_de8k7"]
+
+[resource]
+script = ExtResource("1_de8k7")
+title_id = "INCREASE_DASH_SPEED_TITTLE"
+description_id = "INCREASE_DASH_SPEED_DESCRIPTION"
+upgrade_reference_id = "increase_dash_speed"
+metadata/_custom_type_script = "uid://cre5vttc5fjip"

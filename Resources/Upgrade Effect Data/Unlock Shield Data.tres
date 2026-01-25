@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="UnlockShieldData" load_steps=2 format=3 uid="uid://c3xccttc0ngd6"]
+
+[ext_resource type="Script" uid="uid://d0d16xd41syip" path="res://Scripts/Upgrade Effect Data/unlock_shield_data.gd" id="1_mhfnd"]
+
+[resource]
+script = ExtResource("1_mhfnd")
+value = true
+upgrade_id = "unlock_shield"
+max_level = 1
+cost = 100.0
+factor = 1.0
+cost_based = 3
+metadata/_custom_type_script = "uid://d0d16xd41syip"

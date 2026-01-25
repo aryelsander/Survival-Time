@@ -11,4 +11,5 @@ var bonus_health : float
 var bonus_damage : float
 var bonus_piercing : int
 var bonus_max_speed : float
-var bonus_shoot_speed : float
+var bonus_shoot_wait_time : float
+var bonus_dash_speed : float

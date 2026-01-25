@@ -21,4 +21,6 @@ func get_upgrade_effect() -> void:
 	print("Upgrade ID: " +  upgrade_reference_id +  " não mapeado no Upgrade Manager ou não existe")
 
 func set_value(text: String) -> String:
-	return text.replace("#value#",str(upgrade_effect_data.value))
+	if text:
+		return text.replace("#value#",str(upgrade_effect_data.value))
+	return ""

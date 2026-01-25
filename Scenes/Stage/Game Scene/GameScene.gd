@@ -8,18 +8,12 @@ class_name GameScene extends Node2D
 @export var music : AudioStream
 @export var frequency : float
 @onready var game_over_container: GameOverMenu = $CanvasLayer/GameOverContainer
-@onready var first_time_tutorial: FirstTimeTutorialGameScene = $CanvasLayer/FirstTimeTutorial
 @onready var pause_menu: PauseMenu = $CanvasLayer/PauseMenu
 
 var current_time_to_boss : float
 var player : Player
 var total_currency : float
 func _ready() -> void:
-	if GameManager.save_data.first_time_in_game:
-		first_time_tutorial.show()
-		GameManager.global_time_speed = 0
-		process_mode = Node.PROCESS_MODE_DISABLED
-		
 	GameManager.game_scene = self
 	set_time(current_time_to_boss)
 	player = GameManager.player

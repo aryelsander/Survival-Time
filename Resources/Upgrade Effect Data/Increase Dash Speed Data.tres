@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="IncreaseDashSpeedData" load_steps=2 format=3 uid="uid://drn3xblwgqxgr"]
+
+[ext_resource type="Script" uid="uid://dtaa6xuhrqf4s" path="res://Scripts/Upgrade Effect Data/increase_dash_speed.gd" id="1_kk0k4"]
+
+[resource]
+script = ExtResource("1_kk0k4")
+value = 0.1
+upgrade_id = "increase_dash_speed"
+max_level = 10
+cost = 20.0
+factor = 1.0
+cost_based = 3
+metadata/_custom_type_script = "uid://dtaa6xuhrqf4s"

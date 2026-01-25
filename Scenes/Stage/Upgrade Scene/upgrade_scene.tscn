@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cvgp48j1c7btm"]
+[gd_scene load_steps=26 format=3 uid="uid://cvgp48j1c7btm"]
 
 [ext_resource type="Script" uid="uid://dwm8dwlas3521" path="res://Scenes/Stage/Upgrade Scene/upgrade_scene.gd" id="1_tmfrm"]
 [ext_resource type="Texture2D" uid="uid://dqv8snyl582pm" path="res://Sprites/Circle.png" id="2_l8fdh"]
@@ -10,9 +10,15 @@
 [ext_resource type="Resource" uid="uid://eh0vfleoievo" path="res://Resources/Upgrade Button Data/Increase Max Move Speed Button Data.tres" id="8_eguf2"]
 [ext_resource type="Resource" uid="uid://crqvy0qqd73yy" path="res://Resources/Upgrade Button Data/Increase Piercing Button Data.tres" id="9_5m753"]
 [ext_resource type="Resource" uid="uid://q3cwtdurb0bp" path="res://Resources/Upgrade Button Data/Unlock Dash Button Data.tres" id="10_xwi02"]
+[ext_resource type="Resource" uid="uid://b24oecsslsq1" path="res://Resources/Upgrade Button Data/Increase Dash Speed Button Data.tres" id="11_3vipy"]
 [ext_resource type="Script" uid="uid://enebovch83vv" path="res://Scenes/Stage/Upgrade Scene/requirement_data.gd" id="11_cv6fa"]
 [ext_resource type="Resource" uid="uid://ltqqawd5le7o" path="res://Resources/Upgrade Effect Data/Unlock Dash Data.tres" id="12_cv6fa"]
 [ext_resource type="Resource" uid="uid://6q0asp804pam" path="res://Resources/Upgrade Button Data/Increase Reduction Dash Time Button Data.tres" id="13_wb566"]
+[ext_resource type="Resource" uid="uid://khf18pd0fne" path="res://Resources/Upgrade Button Data/Unlock Shield Button Data.tres" id="14_dwy1r"]
+[ext_resource type="Resource" uid="uid://c3xccttc0ngd6" path="res://Resources/Upgrade Effect Data/Unlock Shield Data.tres" id="15_c4vca"]
+[ext_resource type="Resource" uid="uid://b5rcqffacnf56" path="res://Resources/Upgrade Button Data/Increade Shield Time Button Data.tres" id="15_wb566"]
+[ext_resource type="Resource" uid="uid://snhud27fudw0" path="res://Resources/Upgrade Effect Data/Increase Damage Data.tres" id="17_muulg"]
+[ext_resource type="Resource" uid="uid://bwkv88gvhv0hs" path="res://Resources/Upgrade Button Data/Increase Reduction Shoot Time Button Data.tres" id="17_reri3"]
 
 [sub_resource type="Environment" id="Environment_ffxli"]
 background_mode = 3
@@ -22,9 +28,33 @@ glow_intensity = 2.61
 glow_bloom = 0.35
 adjustment_enabled = true
 
+[sub_resource type="Resource" id="Resource_xcvw8"]
+script = ExtResource("11_cv6fa")
+upgrade_data = ExtResource("17_muulg")
+level_require = 3
+metadata/_custom_type_script = "uid://enebovch83vv"
+
+[sub_resource type="Resource" id="Resource_muulg"]
+script = ExtResource("11_cv6fa")
+upgrade_data = ExtResource("17_muulg")
+level_require = 3
+metadata/_custom_type_script = "uid://enebovch83vv"
+
+[sub_resource type="Resource" id="Resource_ji45l"]
+script = ExtResource("11_cv6fa")
+upgrade_data = ExtResource("12_cv6fa")
+level_require = 1
+metadata/_custom_type_script = "uid://enebovch83vv"
+
 [sub_resource type="Resource" id="Resource_reri3"]
 script = ExtResource("11_cv6fa")
 upgrade_data = ExtResource("12_cv6fa")
+level_require = 1
+metadata/_custom_type_script = "uid://enebovch83vv"
+
+[sub_resource type="Resource" id="Resource_3vipy"]
+script = ExtResource("11_cv6fa")
+upgrade_data = ExtResource("15_c4vca")
 level_require = 1
 metadata/_custom_type_script = "uid://enebovch83vv"
 
@@ -77,11 +107,12 @@ offset_top = -40.0
 offset_right = 20.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_font_sizes/normal_font_size = 64
-theme_override_font_sizes/bold_font_size = 64
-theme_override_font_sizes/bold_italics_font_size = 64
-theme_override_font_sizes/italics_font_size = 64
-theme_override_font_sizes/mono_font_size = 64
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/bold_font_size = 48
+theme_override_font_sizes/bold_italics_font_size = 48
+theme_override_font_sizes/italics_font_size = 48
+theme_override_font_sizes/mono_font_size = 48
 bbcode_enabled = true
 text = "Hold"
 fit_content = true
@@ -99,11 +130,12 @@ offset_right = 73.0
 offset_bottom = -135.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_font_sizes/normal_font_size = 64
-theme_override_font_sizes/bold_font_size = 64
-theme_override_font_sizes/bold_italics_font_size = 64
-theme_override_font_sizes/italics_font_size = 64
-theme_override_font_sizes/mono_font_size = 64
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/bold_font_size = 48
+theme_override_font_sizes/bold_italics_font_size = 48
+theme_override_font_sizes/italics_font_size = 48
+theme_override_font_sizes/mono_font_size = 48
 bbcode_enabled = true
 text = "Hold"
 fit_content = true
@@ -112,70 +144,133 @@ autowrap_mode = 0
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ffxli")
 
-[node name="IncreaseDamage" parent="." node_paths=PackedStringArray("upgrade_scene", "right_button") instance=ExtResource("4_68e5o")]
-offset_left = -199.0
-offset_top = -203.0
-offset_right = 201.0
-offset_bottom = 247.0
+[node name="IncreaseDamage" parent="." node_paths=PackedStringArray("upgrade_scene", "right_button", "left_button", "top_button") instance=ExtResource("4_68e5o")]
+offset_left = 0.0
+offset_top = -150.0
+offset_right = 200.0
+offset_bottom = 100.0
 upgrade_scene = NodePath("..")
 upgrade_button_data = ExtResource("5_hk8lk")
 right_button = NodePath("../UnlockDash")
+left_button = NodePath("../IncreaseMaxHealth")
+top_button = NodePath("../IncreasePiercing")
 
-[node name="IncreaseCurrencyMultiplier" parent="." node_paths=PackedStringArray("upgrade_scene") instance=ExtResource("4_68e5o")]
-offset_left = -632.0
-offset_top = -203.0
-offset_right = -232.0
-offset_bottom = 247.0
+[node name="IncreasePiercing" parent="." node_paths=PackedStringArray("upgrade_scene", "right_button", "left_button", "down_button", "top_button") instance=ExtResource("4_68e5o")]
+offset_left = 0.0
+offset_top = -450.0
+offset_right = 200.0
+offset_bottom = -200.0
 upgrade_scene = NodePath("..")
-upgrade_button_data = ExtResource("5_mps01")
-
-[node name="IncreaseInvulnerableTime" parent="." node_paths=PackedStringArray("upgrade_scene") instance=ExtResource("4_68e5o")]
-offset_left = -1016.0
-offset_top = -203.0
-offset_right = -616.0
-offset_bottom = 247.0
-upgrade_scene = NodePath("..")
-upgrade_button_data = ExtResource("6_hk8lk")
-
-[node name="IncreaseMaxHealth" parent="." node_paths=PackedStringArray("upgrade_scene") instance=ExtResource("4_68e5o")]
-offset_left = -1407.0
-offset_top = -202.0
-offset_right = -1007.0
-offset_bottom = 248.0
-upgrade_scene = NodePath("..")
-upgrade_button_data = ExtResource("7_ro45f")
-
-[node name="IncreaseMaxMoveSpeed" parent="." node_paths=PackedStringArray("upgrade_scene") instance=ExtResource("4_68e5o")]
-offset_left = 165.0
-offset_top = -211.0
-offset_right = 565.0
-offset_bottom = 239.0
-upgrade_scene = NodePath("..")
-upgrade_button_data = ExtResource("8_eguf2")
-
-[node name="IncreasePiercing" parent="." node_paths=PackedStringArray("upgrade_scene") instance=ExtResource("4_68e5o")]
-offset_left = 667.0
-offset_top = -211.0
-offset_right = 1067.0
-offset_bottom = 239.0
-upgrade_scene = NodePath("..")
+requirements = Array[ExtResource("11_cv6fa")]([SubResource("Resource_xcvw8")])
 upgrade_button_data = ExtResource("9_5m753")
+right_button = NodePath("../IncreaseDashSpeed")
+left_button = NodePath("../IncreaseInvulnerableTime")
+down_button = NodePath("../IncreaseDamage")
+top_button = NodePath("../IncreaseReductionShootTime")
 
-[node name="UnlockDash" parent="." node_paths=PackedStringArray("upgrade_scene", "top_button") instance=ExtResource("4_68e5o")]
-offset_left = 1232.0
-offset_top = -203.0
-offset_right = 1632.0
-offset_bottom = 247.0
+[node name="IncreaseReductionShootTime" parent="." node_paths=PackedStringArray("upgrade_scene", "right_button", "down_button") instance=ExtResource("4_68e5o")]
+offset_left = 0.0
+offset_top = -750.0
+offset_right = 200.0
+offset_bottom = -500.0
+upgrade_scene = NodePath("..")
+requirements = Array[ExtResource("11_cv6fa")]([SubResource("Resource_muulg")])
+upgrade_button_data = ExtResource("17_reri3")
+right_button = NodePath("../IncreaseReductionDashTime")
+down_button = NodePath("../IncreasePiercing")
+
+[node name="UnlockDash" parent="." node_paths=PackedStringArray("upgrade_scene", "right_button", "left_button", "top_button") instance=ExtResource("4_68e5o")]
+offset_left = 250.0
+offset_top = -150.0
+offset_right = 450.0
+offset_bottom = 100.0
 upgrade_scene = NodePath("..")
 upgrade_button_data = ExtResource("10_xwi02")
+right_button = NodePath("../UnlockShield")
+left_button = NodePath("../IncreaseDamage")
+top_button = NodePath("../IncreaseDashSpeed")
+
+[node name="IncreaseDashSpeed" parent="." node_paths=PackedStringArray("upgrade_scene", "right_button", "left_button", "down_button", "top_button") instance=ExtResource("4_68e5o")]
+offset_left = 250.0
+offset_top = -450.0
+offset_right = 450.0
+offset_bottom = -200.0
+upgrade_scene = NodePath("..")
+requirements = Array[ExtResource("11_cv6fa")]([SubResource("Resource_ji45l")])
+upgrade_button_data = ExtResource("11_3vipy")
+right_button = NodePath("../IncreaseShieldTime")
+left_button = NodePath("../IncreasePiercing")
+down_button = NodePath("../UnlockDash")
 top_button = NodePath("../IncreaseReductionDashTime")
 
-[node name="IncreaseReductionDashTime" parent="." node_paths=PackedStringArray("upgrade_scene", "down_button") instance=ExtResource("4_68e5o")]
-offset_left = 1226.0
-offset_top = -499.0
-offset_right = 1626.0
-offset_bottom = -49.0
+[node name="IncreaseReductionDashTime" parent="." node_paths=PackedStringArray("upgrade_scene", "left_button", "down_button") instance=ExtResource("4_68e5o")]
+offset_left = 250.0
+offset_top = -750.0
+offset_right = 450.0
+offset_bottom = -500.0
 upgrade_scene = NodePath("..")
 requirements = Array[ExtResource("11_cv6fa")]([SubResource("Resource_reri3")])
 upgrade_button_data = ExtResource("13_wb566")
-down_button = NodePath("../UnlockDash")
+left_button = NodePath("../IncreaseReductionShootTime")
+down_button = NodePath("../IncreaseDashSpeed")
+
+[node name="IncreaseCurrencyMultiplier" parent="." node_paths=PackedStringArray("upgrade_scene", "right_button", "left_button") instance=ExtResource("4_68e5o")]
+offset_left = -500.0
+offset_top = -150.0
+offset_right = -300.0
+offset_bottom = 100.0
+upgrade_scene = NodePath("..")
+upgrade_button_data = ExtResource("5_mps01")
+right_button = NodePath("../IncreaseMaxHealth")
+left_button = NodePath("../IncreaseMaxMoveSpeed")
+
+[node name="IncreaseInvulnerableTime" parent="." node_paths=PackedStringArray("upgrade_scene", "right_button", "down_button") instance=ExtResource("4_68e5o")]
+offset_left = -250.0
+offset_top = -450.0
+offset_right = -50.0
+offset_bottom = -200.0
+upgrade_scene = NodePath("..")
+upgrade_button_data = ExtResource("6_hk8lk")
+right_button = NodePath("../IncreasePiercing")
+down_button = NodePath("../IncreaseMaxHealth")
+
+[node name="IncreaseMaxHealth" parent="." node_paths=PackedStringArray("upgrade_scene", "right_button", "left_button", "top_button") instance=ExtResource("4_68e5o")]
+offset_left = -250.0
+offset_top = -150.0
+offset_right = -50.0
+offset_bottom = 100.0
+upgrade_scene = NodePath("..")
+upgrade_button_data = ExtResource("7_ro45f")
+right_button = NodePath("../IncreaseDamage")
+left_button = NodePath("../IncreaseCurrencyMultiplier")
+top_button = NodePath("../IncreaseInvulnerableTime")
+
+[node name="IncreaseMaxMoveSpeed" parent="." node_paths=PackedStringArray("upgrade_scene", "right_button") instance=ExtResource("4_68e5o")]
+offset_left = -750.0
+offset_top = -150.0
+offset_right = -550.0
+offset_bottom = 100.0
+upgrade_scene = NodePath("..")
+upgrade_button_data = ExtResource("8_eguf2")
+right_button = NodePath("../IncreaseCurrencyMultiplier")
+
+[node name="UnlockShield" parent="." node_paths=PackedStringArray("upgrade_scene", "left_button", "top_button") instance=ExtResource("4_68e5o")]
+offset_left = 500.0
+offset_top = -150.0
+offset_right = 700.0
+offset_bottom = 100.0
+upgrade_scene = NodePath("..")
+upgrade_button_data = ExtResource("14_dwy1r")
+left_button = NodePath("../UnlockDash")
+top_button = NodePath("../IncreaseShieldTime")
+
+[node name="IncreaseShieldTime" parent="." node_paths=PackedStringArray("upgrade_scene", "left_button", "down_button") instance=ExtResource("4_68e5o")]
+offset_left = 500.0
+offset_top = -450.0
+offset_right = 700.0
+offset_bottom = -200.0
+upgrade_scene = NodePath("..")
+requirements = Array[ExtResource("11_cv6fa")]([SubResource("Resource_3vipy")])
+upgrade_button_data = ExtResource("15_wb566")
+left_button = NodePath("../IncreaseDashSpeed")
+down_button = NodePath("../UnlockShield")
