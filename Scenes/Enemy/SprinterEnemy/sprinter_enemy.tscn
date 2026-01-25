@@ -1,22 +1,27 @@
-[gd_scene load_steps=6 format=3 uid="uid://cn4piaorowspf"]
+[gd_scene load_steps=7 format=3 uid="uid://cn4piaorowspf"]
 
 [ext_resource type="Script" uid="uid://cy1jajpeb8nhc" path="res://Scenes/Enemy/SprinterEnemy/sprinter_enemy.gd" id="1_37qpl"]
 [ext_resource type="Resource" uid="uid://b3a1ggxv8feto" path="res://Resources/Enemy Data/Sprinter Data.tres" id="2_37qpl"]
 [ext_resource type="Resource" uid="uid://dvoibx8tek078" path="res://Resources/Unity Type/Enemy.tres" id="2_ounfn"]
-[ext_resource type="Texture2D" uid="uid://b5do2r0viw2vq" path="res://Sprites/Square.png" id="3_a8v7l"]
+[ext_resource type="Texture2D" uid="uid://duac7mr8xlj6j" path="res://Sprites/Sprinter Enemy.png" id="4_ounfn"]
+[ext_resource type="AudioStream" uid="uid://bo6kc3a8x152i" path="res://Music/FX/enemy_take_damage.wav" id="4_vb7c7"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sss2j"]
-size = Vector2(32, 32)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ounfn"]
+size = Vector2(26.43503, 25.935028)
 
 [node name="SprinterEnemy" type="Area2D"]
-modulate = Color(1, 0, 0.016183853, 1)
 script = ExtResource("1_37qpl")
 unit_type = ExtResource("2_ounfn")
 enemy_data = ExtResource("2_37qpl")
-blink_color = Color(1, 1, 1, 1)
+blink_color = Color(18.892157, 18.892157, 18.892157, 1)
+take_damage_fx = ExtResource("4_vb7c7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("3_a8v7l")
+rotation = -0.7853982
+texture = ExtResource("4_ounfn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_sss2j")
+position = Vector2(5.484389, 0.17677659)
+rotation = -0.7853982
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("RectangleShape2D_ounfn")

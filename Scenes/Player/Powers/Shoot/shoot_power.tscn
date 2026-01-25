@@ -7,7 +7,7 @@
 [node name="ShootPower" type="Node"]
 script = ExtResource("1_nv4dg")
 bullet = ExtResource("2_j6xvl")
-shoot_time = 3.0
+shoot_time = 1.0
 
 [node name="shoot_timer" type="Node" parent="."]
 script = ExtResource("3_jec1l")

@@ -1,24 +1,26 @@
-[gd_scene load_steps=6 format=3 uid="uid://b7bb8fobrpse8"]
+[gd_scene load_steps=7 format=3 uid="uid://b7bb8fobrpse8"]
 
 [ext_resource type="Script" uid="uid://d34d7ns4qoats" path="res://Scenes/Enemy/Tank Enemy/tank_enemy.gd" id="1_yyywr"]
 [ext_resource type="Resource" uid="uid://dvoibx8tek078" path="res://Resources/Unity Type/Enemy.tres" id="2_3ae25"]
 [ext_resource type="Resource" uid="uid://c6gt4snwgyc5y" path="res://Resources/Enemy Data/Tank Data.tres" id="2_ylat6"]
-[ext_resource type="Texture2D" uid="uid://b5do2r0viw2vq" path="res://Sprites/Square.png" id="3_1rro1"]
+[ext_resource type="Texture2D" uid="uid://dg762voqahwn3" path="res://Sprites/Tank Enemy.png" id="4_3ae25"]
+[ext_resource type="AudioStream" uid="uid://bo6kc3a8x152i" path="res://Music/FX/enemy_take_damage.wav" id="4_oes8k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sss2j"]
-size = Vector2(80, 80)
+size = Vector2(100, 80)
 
 [node name="TankEnemy" type="Area2D"]
 script = ExtResource("1_yyywr")
-pushback_force = 200.0
 unit_type = ExtResource("2_3ae25")
 enemy_data = ExtResource("2_ylat6")
-blink_color = Color(1, 1, 1, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_sss2j")
+blink_color = Color(18.892157, 18.892157, 18.892157, 1)
+take_damage_fx = ExtResource("4_oes8k")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.5067887, 0.5067887, 0.5067887, 1)
-scale = Vector2(2.5, 2.5)
-texture = ExtResource("3_1rro1")
+scale = Vector2(2, 2)
+texture = ExtResource("4_3ae25")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 9)
+shape = SubResource("RectangleShape2D_sss2j")

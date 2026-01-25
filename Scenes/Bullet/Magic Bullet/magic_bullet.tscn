@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bgvucpuhqfxmd"]
 
 [ext_resource type="Script" uid="uid://d0dvn4d4cjjrx" path="res://Scenes/Bullet/Magic Bullet/magic_bullet.gd" id="1_t4xty"]
-[ext_resource type="Texture2D" uid="uid://dqv8snyl582pm" path="res://Sprites/Circle.png" id="2_t4xty"]
+[ext_resource type="Texture2D" uid="uid://lhpyqrasu7wu" path="res://Sprites/Magic Bullet.png" id="2_t4xty"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t4xty"]
 radius = 7.556461
@@ -11,8 +11,7 @@ script = ExtResource("1_t4xty")
 range_scale = 0.3
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.4037233, 0, 0.6900825, 1)
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.6, 0.6)
 texture = ExtResource("2_t4xty")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

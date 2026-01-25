@@ -71,9 +71,20 @@ func check_requirements() -> bool:
 	
 	return true
 
+func get_requirement_description() -> void:
+	description_label.text = tr("REQUIREMENTS") +  "\n"
+	for requirement in requirements:
+		for data in UpgradeButtonDataManager.button_datas:
+			
+			if data.upgrade_reference_id == requirement.upgrade_data.upgrade_id:
+				description_label.text += data.get_title_id + " Lv: " + str(requirement.level_require) + "\n"
 func update_ui() -> void:
 	title_label.text = upgrade_button_data.get_title_id
-	description_label.text = upgrade_button_data.get_description
+	if check_requirements():
+		description_label.text = upgrade_button_data.get_description
+	else:
+		get_requirement_description()
+		
 	get_effect_count()	
 	quantity_label.text = str(upgrade_count ) + "/" + str(upgrade_button_data.upgrade_effect_data.max_level)
 

@@ -10,6 +10,7 @@ signal on_buy_upgrade
 @onready var enter_game_text: RichTextLabel = $CanvasLayer/EnterGameText
 @onready var buy_upgrade_text: RichTextLabel = $CanvasLayer/BuyUpgradeText
 @onready var currency_text: RichTextLabel = $CanvasLayer/CurrencyText
+@export var upgrade_scene_music : AudioStream
 var scroll_speed : Vector2 = Vector2(0.1,0.1)
 var drag_speed : float = 1
 var last_mouse_pos : Vector2
@@ -22,6 +23,8 @@ func _ready() -> void:
 	initial_button.button.grab_focus()
 	update_ui()
 	ControllerManager.change_controls.connect(update_ui)
+	if (AudioManager.music_player.playing and AudioManager.music_player.stream != upgrade_scene_music) or not AudioManager.music_player.playing:
+		AudioManager.play_music(upgrade_scene_music)
 
 func hack_add_currency() -> void:
 	GameManager.save_data.add_currency(1000)

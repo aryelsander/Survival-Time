@@ -1,7 +1,8 @@
-[gd_scene load_steps=26 format=3 uid="uid://cvgp48j1c7btm"]
+[gd_scene load_steps=27 format=3 uid="uid://cvgp48j1c7btm"]
 
 [ext_resource type="Script" uid="uid://dwm8dwlas3521" path="res://Scenes/Stage/Upgrade Scene/upgrade_scene.gd" id="1_tmfrm"]
 [ext_resource type="Texture2D" uid="uid://dqv8snyl582pm" path="res://Sprites/Circle.png" id="2_l8fdh"]
+[ext_resource type="AudioStream" uid="uid://b6meyi7wd4nou" path="res://Music/Survival Time Menu Music.ogg" id="2_xcvw8"]
 [ext_resource type="PackedScene" uid="uid://dpbqfdvmt7max" path="res://Scenes/Stage/Upgrade Scene/Upgrade Button/upgrade_button.tscn" id="4_68e5o"]
 [ext_resource type="Resource" uid="uid://85sesn3q6r6n" path="res://Resources/Upgrade Button Data/Increase Damage Button Data.tres" id="5_hk8lk"]
 [ext_resource type="Resource" uid="uid://bjl3c0rhuffwj" path="res://Resources/Upgrade Button Data/Increase Currency Multiplier.tres" id="5_mps01"]
@@ -64,6 +65,7 @@ default_zoom_camera = Vector2(1, 1)
 min_zoom_camera = Vector2(0.5, 0.5)
 max_zoom_camera = Vector2(2, 2)
 initial_button = NodePath("IncreaseDamage")
+upgrade_scene_music = ExtResource("2_xcvw8")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 ignore_rotation = false

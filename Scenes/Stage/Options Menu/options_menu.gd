@@ -80,3 +80,5 @@ func set_focus() -> void:
 
 func _on_close() -> void:
 	visible = false
+	
+	

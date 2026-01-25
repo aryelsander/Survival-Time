@@ -7,6 +7,6 @@ script = ExtResource("1_5kd15")
 value = true
 upgrade_id = "unlock_dash"
 max_level = 1
-cost = 50.0
+cost = 200.0
 factor = 1.0
 metadata/_custom_type_script = "uid://dosrafv128poo"

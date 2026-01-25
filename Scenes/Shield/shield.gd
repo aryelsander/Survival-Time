@@ -17,8 +17,7 @@ func _ready() -> void:
 	area_entered.connect(_on_collision_bullet)
 	scale = Vector2.ONE * shield_size
 	#disable_shield()
-	shield_time += GameManager.player_bonus.bonus_shield_time
-	current_shield_time = shield_time	
+
 func use_shield(delta: float,enable : bool) -> void:
 	if enable and can_use and not overcharge:
 		current_shield_time = clamp(current_shield_time - (spend_shield_time * GameManager.global_time_speed),0,shield_time)

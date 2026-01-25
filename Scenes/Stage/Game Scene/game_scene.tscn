@@ -1,30 +1,109 @@
-[gd_scene load_steps=9 format=3 uid="uid://baffyvu8l15kj"]
+[gd_scene load_steps=20 format=3 uid="uid://baffyvu8l15kj"]
 
 [ext_resource type="Script" uid="uid://dajhau3ak3yrs" path="res://Scenes/Stage/Game Scene/GameScene.gd" id="1_sv04b"]
+[ext_resource type="AudioStream" uid="uid://bxwr5etj3xite" path="res://Music/In Game Music Survival Time.ogg" id="2_7emg0"]
 [ext_resource type="PackedScene" uid="uid://cyu7mqfll4rh7" path="res://Scenes/Player/player.tscn" id="2_25205"]
 [ext_resource type="PackedScene" uid="uid://kk15sx7k0m2t" path="res://Scenes/Stage/Game Scene/Managers/Spawn Manager/spawn_manager.tscn" id="2_rlq2x"]
 [ext_resource type="Script" uid="uid://bqguc4lmxea1i" path="res://Addon/Global Timer/global_timer.gd" id="3_gqxi6"]
 [ext_resource type="Environment" uid="uid://b4now75hmvnx6" path="res://Resources/Environment/game_scene.tres" id="4_rlq2x"]
 [ext_resource type="Script" uid="uid://c3j3t48r1gdtc" path="res://Scenes/Stage/Game Scene/game_over_container.gd" id="6_k1sm0"]
 [ext_resource type="Script" uid="uid://cl73svtvuf57f" path="res://Scenes/Stage/Game Scene/pause_menu.gd" id="8_fpsds"]
+[ext_resource type="Texture2D" uid="uid://ca26i7pesocwv" path="res://Sprites/Background Game-Sheet.png" id="9_7emg0"]
 [ext_resource type="PackedScene" uid="uid://whwc31fcqlo8" path="res://Scenes/Stage/Options Menu/options_menu.tscn" id="9_cvyba"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uysir"]
+atlas = ExtResource("9_7emg0")
+region = Rect2(0, 0, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v3p62"]
+atlas = ExtResource("9_7emg0")
+region = Rect2(1920, 0, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00sk1"]
+atlas = ExtResource("9_7emg0")
+region = Rect2(3840, 0, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4j1ws"]
+atlas = ExtResource("9_7emg0")
+region = Rect2(5760, 0, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f6yhy"]
+atlas = ExtResource("9_7emg0")
+region = Rect2(7680, 0, 1920, 1080)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wbg1e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uysir")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v3p62")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_00sk1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4j1ws")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f6yhy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cvyba"]
+bg_color = Color(0.11372549, 0.11372549, 0.11372549, 0)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uysir"]
+bg_color = Color(0.1254902, 0.1254902, 0.1254902, 0.5176471)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7emg0"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [node name="GameScene" type="Node2D"]
 script = ExtResource("1_sv04b")
+music = ExtResource("2_7emg0")
 frequency = 3.0
+
+[node name="AnimatedBackground" type="AnimatedSprite2D" parent="."]
+z_index = -100
+sprite_frames = SubResource("SpriteFrames_wbg1e")
+autoplay = "default"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="TimeToBossTimer" type="Node" parent="."]
+[node name="TimeToEndGame" type="Node" parent="."]
 script = ExtResource("3_gqxi6")
-wait_time = 601.0
+wait_time = 300.0
 autoplay = true
 metadata/_custom_type_script = "uid://bqguc4lmxea1i"
 
 [node name="SpawnManager" parent="." instance=ExtResource("2_rlq2x")]
 
 [node name="Player" parent="." instance=ExtResource("2_25205")]
-max_speed = 5.0
 acceleration_speed = 0.1
 shoot_distance_vision = 500.0
 
@@ -140,22 +219,36 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_cvyba")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_uysir")
+theme_override_styles/focus = SubResource("StyleBoxFlat_7emg0")
 text = "Continue"
 
 [node name="SettingsButton" type="Button" parent="CanvasLayer/PauseMenu"]
 layout_mode = 2
+size_flags_vertical = 3
 theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_cvyba")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_uysir")
+theme_override_styles/focus = SubResource("StyleBoxFlat_7emg0")
+text = "Settings"
 
 [node name="BackToUpgradeButton" type="Button" parent="CanvasLayer/PauseMenu"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_cvyba")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_uysir")
+theme_override_styles/focus = SubResource("StyleBoxFlat_7emg0")
 text = "Back to Upgrade"
 
 [node name="BackToMainMenu" type="Button" parent="CanvasLayer/PauseMenu"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_cvyba")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_uysir")
+theme_override_styles/focus = SubResource("StyleBoxFlat_7emg0")
 text = "Back to Main Menu"
 
 [node name="OptionsMenu" parent="CanvasLayer" node_paths=PackedStringArray("return_focus_control") instance=ExtResource("9_cvyba")]

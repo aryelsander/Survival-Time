@@ -1,22 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://dat6ogkwso05j"]
+[gd_scene load_steps=7 format=3 uid="uid://dat6ogkwso05j"]
 
-[ext_resource type="Texture2D" uid="uid://b5do2r0viw2vq" path="res://Sprites/Square.png" id="1_mw074"]
 [ext_resource type="Script" uid="uid://din1obideu466" path="res://Scenes/Enemy/Follower Enemy/follower_enemy.gd" id="1_nvvbs"]
 [ext_resource type="Resource" uid="uid://cq0bx85ljnjh6" path="res://Resources/Enemy Data/Follower Data.tres" id="2_hlebv"]
 [ext_resource type="Resource" uid="uid://dvoibx8tek078" path="res://Resources/Unity Type/Enemy.tres" id="2_kpes5"]
+[ext_resource type="Texture2D" uid="uid://dlq10c5cni004" path="res://Sprites/Follower Enemy.png" id="4_kpes5"]
+[ext_resource type="AudioStream" uid="uid://bo6kc3a8x152i" path="res://Music/FX/enemy_take_damage.wav" id="4_vs3ol"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sss2j"]
-size = Vector2(32, 32)
+size = Vector2(50, 50)
 
 [node name="FollowerEnemy" type="Area2D"]
-modulate = Color(1, 0.00018495321, 0.2807088, 1)
 script = ExtResource("1_nvvbs")
 unit_type = ExtResource("2_kpes5")
 enemy_data = ExtResource("2_hlebv")
-blink_color = Color(1, 1, 1, 1)
+blink_color = Color(18.892157, 18.892157, 18.892157, 1)
+take_damage_fx = ExtResource("4_vs3ol")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_mw074")
+texture = ExtResource("4_kpes5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_sss2j")

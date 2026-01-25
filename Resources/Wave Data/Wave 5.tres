@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="WaveData" load_steps=7 format=3 uid="uid://udnxinpq786a"]
+
+[ext_resource type="Script" uid="uid://bbk81aukhacib" path="res://Scenes/Stage/Game Scene/Managers/Spawn Manager/wave_data.gd" id="1_btc8i"]
+[ext_resource type="PackedScene" uid="uid://dat6ogkwso05j" path="res://Scenes/Enemy/Follower Enemy/follower_enemy.tscn" id="1_uuwf4"]
+[ext_resource type="PackedScene" uid="uid://1ul327s6rguk" path="res://Scenes/Enemy/Shooter Enemy/shooter_enemy.tscn" id="2_5h0c7"]
+[ext_resource type="PackedScene" uid="uid://cn4piaorowspf" path="res://Scenes/Enemy/SprinterEnemy/sprinter_enemy.tscn" id="3_bfw24"]
+[ext_resource type="PackedScene" uid="uid://dsjv2i0olwynk" path="res://Scenes/Enemy/Mage Enemy/mage_enemy.tscn" id="4_dqgac"]
+[ext_resource type="PackedScene" uid="uid://b7bb8fobrpse8" path="res://Scenes/Enemy/Tank Enemy/tank_enemy.tscn" id="5_335i7"]
+
+[resource]
+script = ExtResource("1_btc8i")
+wave_time = 60.0
+spawn_time = 1.5
+enemies = Array[PackedScene]([ExtResource("1_uuwf4"), ExtResource("2_5h0c7"), ExtResource("3_bfw24"), ExtResource("4_dqgac"), ExtResource("5_335i7")])
+metadata/_custom_type_script = "uid://bbk81aukhacib"

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3 uid="uid://cp061fnkvnjtc"]
+
+[ext_resource type="Script" uid="uid://cqakae3ei1b8t" path="res://Scenes/Enemy/enemy_data.gd" id="1_wkism"]
+
+[resource]
+script = ExtResource("1_wkism")
+base_health = 1000.0
+base_damage = 2.0
+base_currency = 10000.0
+metadata/_custom_type_script = "uid://cqakae3ei1b8t"

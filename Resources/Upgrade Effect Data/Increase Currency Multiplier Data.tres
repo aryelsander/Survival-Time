@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_gec2l")
+upgrade_name = "Increase Currency Multiplier"
 value = 0.3
 upgrade_id = "increase_currency_multiplier"
 max_level = 10

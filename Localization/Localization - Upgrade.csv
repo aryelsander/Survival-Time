@@ -1,5 +1,6 @@
 KEYS,pt,en
 MAX,MÁXIMO,MAX
+REQUIREMENTS,Requisitos,Requirements
 INCREASE_DAMAGE_TITLE,Sobrecarga Balística,Ballistic Overdrive
 INCREASE_DAMAGE_DESCRIPTION,Aumenta a dano do tiro em #value# por level,Increases the shoot damage by #value# per level
 INCREASE_CURRENCY_MULTIPLIER_TITLE,Tempo é Dinheiro,Time is Money
@@ -13,11 +14,11 @@ INCREASE_MAX_SPEED_DESCRIPTION,Aumenta velocidade máxima em #value# por level,I
 INCREASE_PIERCING_TITLE,Rasgo Temporal,Temporal Rupture
 INCREASE_PIERCING_DESCRIPTION,Aumenta a quantidade de perfurações do disparo em #value# por level,Increases shot pierce count by #value# per level
 UNLOCK_DASH_TITLE,Movimento Intemporal,Timeless Motion
-UNLOCK_DASH_DESCRIPTION,Desbloqueia a esquiva. Pressione #button_1# para usar,Unlock dash. Press #button_1# to use
+UNLOCK_DASH_DESCRIPTION,Libera uma esquiva que ajuda a desviar de inimigos. Pressione #button_1# para usar,Unlocks a dodge that helps you evade enemies . Press #button_1# to use
 INCREASE_REDUCTION_DASH_TIME_TITLE,Ruptura de Recarga,Cooldown Break
 INCREASE_REDUCTION_DASH_TIME_DESCRIPTION,Reduz o tempo de recarga da esquiva em #value# por level,Reduces dash cooldown by #value# per level.
 UNLOCK_SHIELD_TITLE,Distorção Temporal,Temporal Distortion
-UNLOCK_SHIELD_DESCRIPTION,Desbloqueia a escudo. Segure o #button_2# para usar,Unlock shield. Hold #button_2# to use
+UNLOCK_SHIELD_DESCRIPTION,Libera um escudo que protege contra tiros. Segure o #button_2# para usar,Unlocks a shield that protects against projectiles. Hold #button_2# to use
 INCREASE_SHIELD_TIME_TITLE,Núcleo de Estabilidade,Stability Core
 INCREASE_SHIELD_TIME_DESCRIPTION,Aumenta o tempo de escudo em #value# por level,Increase shield time by #value# per level
 INCREASE_REDUCTION_SHOOT_TIME_TITLE,Núcleo de Aceleração Temporal,Temporal Acceleration Core

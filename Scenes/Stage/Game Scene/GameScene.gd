@@ -1,15 +1,16 @@
 class_name GameScene extends Node2D
+@onready var animated_background: AnimatedSprite2D = $AnimatedBackground
 
 @onready var world_environment: WorldEnvironment = $WorldEnvironment
 #@export var time_to_boss : float
-@onready var time_to_boss_timer: GlobalTimer = $TimeToBossTimer
+@onready var time_to_end_game_timer: GlobalTimer = $TimeToEndGame
 @onready var time_count_text: RichTextLabel = $TimeCountText
 @onready var spawn_manager: SpawnManager = $SpawnManager
 @export var music : AudioStream
 @export var frequency : float
 @onready var game_over_container: GameOverMenu = $CanvasLayer/GameOverContainer
 @onready var pause_menu: PauseMenu = $CanvasLayer/PauseMenu
-
+var time_finish : bool
 var current_time_to_boss : float
 var player : Player
 var total_currency : float
@@ -24,11 +25,25 @@ func _ready() -> void:
 	player.get_closest_enemy_timer.timeout.connect(get_enemy)
 	player.get_closest_enemy_timer.start()
 	AudioManager.play_music(music)
+	time_to_end_game_timer.timeout.connect(on_time_to_end_game_finish)
+func on_time_to_end_game_finish() -> void:
+	time_to_end_game_timer.stop()
+	time_to_end_game_timer.wait_time = 0
+	time_finish = true
+	set_time(0)
 func _process(_delta: float) -> void:
+	animated_background.speed_scale = GameManager.global_time_speed
 	world_environment.environment.adjustment_saturation = clamp(GameManager.global_time_speed,0,1)
-	set_time(time_to_boss_timer.time_left)
+	set_time(time_to_end_game_timer.time_left)
 	if Input.is_action_just_pressed("pause"):
 		pause_menu.open()
+	if time_finish and spawn_manager.spawned_enemies.size() == 0:
+		win_game()
+		
+func win_game() -> void:
+	GameManager.save_data.currency += total_currency
+	GameManager.save_game_data(GameManager.save_data)
+	get_tree().change_scene_to_file("uid://d3gqjyyqbxbed")
 	
 func on_enemy_die(enemy: BaseEnemy) -> void:
 	total_currency += enemy.enemy_data.base_currency + (enemy.enemy_data.base_currency * GameManager.player_bonus.bonus_currency_multiplier)

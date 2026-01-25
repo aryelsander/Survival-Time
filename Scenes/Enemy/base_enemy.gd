@@ -8,9 +8,11 @@ signal collision_bullet(bullet : BaseBullet)
 @export var unit_type : UnitType
 @export var enemy_data : EnemyData
 @export var blink_color : Color
+@export var take_damage_fx : AudioStream
 var current_health : float
 var target : Player
 var spawn_manager : SpawnManager
+
 func _ready() -> void:
 	target = GameManager.player
 	color = modulate
@@ -22,7 +24,9 @@ func _ready() -> void:
 	death.connect(_on_death)
 	
 func _on_take_damage(damage : float) -> void:
+	AudioManager.play_fx(take_damage_fx,position)
 	current_health -= damage
+	
 	if current_health <= 0:
 		death.emit(self)
 
@@ -34,7 +38,6 @@ func get_target() -> bool:
 func _on_death(base_enemy : BaseEnemy) -> void:
 	spawn_manager.spawned_enemies.erase(self)
 	spawn_manager.get_closest_enemy(target)
-	#Recheck value win
 	queue_free()
 
 func _on_collision_bullet(bullet : BaseBullet) -> void:

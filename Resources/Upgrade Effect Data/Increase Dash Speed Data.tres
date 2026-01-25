@@ -4,7 +4,8 @@
 
 [resource]
 script = ExtResource("1_kk0k4")
-value = 0.1
+upgrade_name = "Dash Speed"
+value = 0.2
 upgrade_id = "increase_dash_speed"
 max_level = 10
 cost = 20.0

@@ -59,7 +59,6 @@ func delete_save_game_data() -> bool:
 	
 	dir.remove("save_dat.res")
 	save_data = GameData.default()
-	save_data.currency = 1000000
 	return true
 
 func delete_configuration_data() -> bool:
@@ -82,10 +81,13 @@ func set_language(language: String) -> void:
 	if language.begins_with("pt"):
 		TranslationServer.set_locale("pt")
 		GameManager.configuration_data.language = "pt"
+	elif language.begins_with("en"):
+		TranslationServer.set_locale("en")
+		GameManager.configuration_data.language = "en"
 	else:
 		TranslationServer.set_locale("en")
 		GameManager.configuration_data.language = "en"
-	change_language.emit()	
+	change_language.emit()
 	
 func get_language_from_system() -> String:
 	return TranslationServer.get_locale()

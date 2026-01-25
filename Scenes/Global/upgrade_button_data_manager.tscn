@@ -1,0 +1,20 @@
+[gd_scene load_steps=15 format=3 uid="uid://b358kysf5t10x"]
+
+[ext_resource type="Script" uid="uid://cc07k24p0l2ml" path="res://Scenes/Global/upgrade_button_data_manager.gd" id="1_ueyq7"]
+[ext_resource type="Script" uid="uid://cre5vttc5fjip" path="res://Scenes/Stage/Upgrade Scene/Upgrade Button/upgrade_buton_data.gd" id="2_it6hr"]
+[ext_resource type="Resource" uid="uid://b5rcqffacnf56" path="res://Resources/Upgrade Button Data/Increade Shield Time Button Data.tres" id="3_fbp8p"]
+[ext_resource type="Resource" uid="uid://bjl3c0rhuffwj" path="res://Resources/Upgrade Button Data/Increase Currency Multiplier.tres" id="4_k75fw"]
+[ext_resource type="Resource" uid="uid://85sesn3q6r6n" path="res://Resources/Upgrade Button Data/Increase Damage Button Data.tres" id="5_qays6"]
+[ext_resource type="Resource" uid="uid://b24oecsslsq1" path="res://Resources/Upgrade Button Data/Increase Dash Speed Button Data.tres" id="6_7irwb"]
+[ext_resource type="Resource" uid="uid://cdaua5jsh8m1i" path="res://Resources/Upgrade Button Data/Increase Invulnerable Time Button Data.tres" id="7_gng6b"]
+[ext_resource type="Resource" uid="uid://dnn832usivo4" path="res://Resources/Upgrade Button Data/Increase Max Health Button Data.tres" id="8_cb03e"]
+[ext_resource type="Resource" uid="uid://eh0vfleoievo" path="res://Resources/Upgrade Button Data/Increase Max Move Speed Button Data.tres" id="9_d576x"]
+[ext_resource type="Resource" uid="uid://crqvy0qqd73yy" path="res://Resources/Upgrade Button Data/Increase Piercing Button Data.tres" id="10_tj3w5"]
+[ext_resource type="Resource" uid="uid://6q0asp804pam" path="res://Resources/Upgrade Button Data/Increase Reduction Dash Time Button Data.tres" id="11_u03hv"]
+[ext_resource type="Resource" uid="uid://bwkv88gvhv0hs" path="res://Resources/Upgrade Button Data/Increase Reduction Shoot Time Button Data.tres" id="12_yjue4"]
+[ext_resource type="Resource" uid="uid://q3cwtdurb0bp" path="res://Resources/Upgrade Button Data/Unlock Dash Button Data.tres" id="13_stqoi"]
+[ext_resource type="Resource" uid="uid://khf18pd0fne" path="res://Resources/Upgrade Button Data/Unlock Shield Button Data.tres" id="14_mcwep"]
+
+[node name="UpgradeButtonDataManager" type="Node"]
+script = ExtResource("1_ueyq7")
+button_datas = Array[ExtResource("2_it6hr")]([ExtResource("3_fbp8p"), ExtResource("4_k75fw"), ExtResource("5_qays6"), ExtResource("6_7irwb"), ExtResource("7_gng6b"), ExtResource("8_cb03e"), ExtResource("9_d576x"), ExtResource("10_tj3w5"), ExtResource("11_u03hv"), ExtResource("12_yjue4"), ExtResource("13_stqoi"), ExtResource("14_mcwep")])

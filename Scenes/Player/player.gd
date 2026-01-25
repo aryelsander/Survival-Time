@@ -18,6 +18,7 @@ signal die
 @export var shield_size : float
 @export var invulnerable_time : float
 @export var blink_color : Color
+@export var take_damage_fx : AudioStream
 @onready var dash_power: DashPower = $DashPower
 @onready var shoot_power: ShootPower = $ShootPower
 @onready var get_closest_enemy_timer: GlobalTimer = $GetClosestEnemyTimer
@@ -69,6 +70,7 @@ func set_bonus() -> void:
 	unlock_dash = GameManager.player_bonus.unlocked_dash
 	unlock_shield = GameManager.player_bonus.unlocked_shield
 	shield.shield_time += GameManager.player_bonus.bonus_shield_time
+	shield.current_shield_time = shield.shield_time	
 	dash_bar.visible = false
 	shoot_power.shoot_timer.wait_time -= GameManager.player_bonus.bonus_shoot_wait_time
 	dash_power.dash_speed += GameManager.player_bonus.bonus_dash_speed
@@ -158,11 +160,11 @@ func get_target() -> void:
 
 func take_damage(_value: float) -> void:
 	current_hp -= _value
+	AudioManager.play_fx(take_damage_fx,position)
 	health_bar.update_bar(current_hp / max_hp)
 	call_deferred("blink")
 	if current_hp <= 0:
 		die.emit()
-	pass
 
 func on_die() -> void:
 	queue_free()

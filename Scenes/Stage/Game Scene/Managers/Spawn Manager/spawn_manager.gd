@@ -95,8 +95,8 @@ func get_closest_enemies(target: Node2D, quantity: int,ricochet_distance : float
 	
 	return result
 	
+
 func _on_wave_time_timeout() -> void:
-	print("wave timeout")
 	wave_index += 1
 	if wave_index < spawn_data.wave_datas.size():
 		set_wave(wave_index)

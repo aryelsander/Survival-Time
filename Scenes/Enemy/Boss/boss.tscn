@@ -1,0 +1,78 @@
+[gd_scene load_steps=7 format=3 uid="uid://clsuici4e3feo"]
+
+[ext_resource type="Script" uid="uid://dda3r56fstcgj" path="res://Scenes/Stage/Game Scene/boss.gd" id="1_khj6j"]
+[ext_resource type="Texture2D" uid="uid://cttu20mljkoty" path="res://Sprites/Boss.png" id="4_ngdcq"]
+[ext_resource type="Script" uid="uid://bqguc4lmxea1i" path="res://Addon/Global Timer/global_timer.gd" id="5_o0b5g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uysir"]
+size = Vector2(224, 220)
+
+[sub_resource type="GDScript" id="GDScript_lql5b"]
+script/source = "class_name MarkersData extends Node2D
+@onready var marker_top_left: Marker2D = $MarkerTopLeft
+@onready var market_top_right: Marker2D = $MarketTopRight
+@onready var market_top_middle: Marker2D = $MarketTopMiddle
+@onready var marker_bottom_left: Marker2D = $MarkerBottomLeft
+@onready var market_bottom_right: Marker2D = $MarketBottomRight
+@onready var marker_middle_left: Marker2D = $MarkerMiddleLeft
+@onready var market_middle_right: Marker2D = $MarketMiddleRight
+@onready var market_bottom_middle: Marker2D = $MarketBottomMiddle
+"
+
+[sub_resource type="GDScript" id="GDScript_khj6j"]
+script/source = "
+	
+"
+
+[node name="Boss" type="Area2D"]
+script = ExtResource("1_khj6j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_uysir")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("4_ngdcq")
+
+[node name="ActionTimer" type="Node" parent="."]
+script = ExtResource("5_o0b5g")
+wait_time = 10.0
+metadata/_custom_type_script = "uid://bqguc4lmxea1i"
+
+[node name="RefreshTimer" type="Node" parent="."]
+script = ExtResource("5_o0b5g")
+wait_time = 3.0
+metadata/_custom_type_script = "uid://bqguc4lmxea1i"
+
+[node name="Markers" type="Node2D" parent="."]
+script = SubResource("GDScript_lql5b")
+
+[node name="MarkerTopLeft" type="Marker2D" parent="Markers"]
+position = Vector2(-112, -112)
+
+[node name="MarketTopRight" type="Marker2D" parent="Markers"]
+position = Vector2(112, -112)
+
+[node name="MarketTopMiddle" type="Marker2D" parent="Markers"]
+position = Vector2(0, -112)
+
+[node name="MarkerBottomLeft" type="Marker2D" parent="Markers"]
+position = Vector2(-112, 114)
+
+[node name="MarketBottomRight" type="Marker2D" parent="Markers"]
+position = Vector2(112, 114)
+
+[node name="MarkerMiddleLeft" type="Marker2D" parent="Markers"]
+position = Vector2(-112, 0)
+
+[node name="MarketMiddleRight" type="Marker2D" parent="Markers"]
+position = Vector2(112, 0)
+
+[node name="MarketBottomMiddle" type="Marker2D" parent="Markers"]
+position = Vector2(0, 113)
+
+[node name="BossSkill 1" type="Node" parent="."]
+script = SubResource("GDScript_khj6j")
+
+[node name="SkillTimer" type="Node" parent="."]
+script = ExtResource("5_o0b5g")
+metadata/_custom_type_script = "uid://bqguc4lmxea1i"

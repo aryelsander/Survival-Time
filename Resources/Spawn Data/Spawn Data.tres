@@ -1,10 +1,14 @@
-[gd_resource type="Resource" script_class="SpawnData" load_steps=4 format=3 uid="uid://cqyjxig2f6qg4"]
+[gd_resource type="Resource" script_class="SpawnData" load_steps=8 format=3 uid="uid://cqyjxig2f6qg4"]
 
 [ext_resource type="Script" uid="uid://cncbc1rh3of0k" path="res://Scenes/Stage/Game Scene/Managers/Spawn Manager/spawn_data.gd" id="1_3yf7h"]
 [ext_resource type="Script" uid="uid://bbk81aukhacib" path="res://Scenes/Stage/Game Scene/Managers/Spawn Manager/wave_data.gd" id="2_dhmt0"]
 [ext_resource type="Resource" uid="uid://dy0lspdqagq1h" path="res://Resources/Wave Data/Wave 1.tres" id="3_dhmt0"]
+[ext_resource type="Resource" uid="uid://bglc0wjtk472x" path="res://Resources/Wave Data/Wave 2.tres" id="4_nw3jd"]
+[ext_resource type="Resource" uid="uid://cjb8ih36tr8c" path="res://Resources/Wave Data/Wave 3.tres" id="5_bbreg"]
+[ext_resource type="Resource" uid="uid://bjbjfxcuuqk3c" path="res://Resources/Wave Data/Wave 4.tres" id="6_hvh7v"]
+[ext_resource type="Resource" uid="uid://udnxinpq786a" path="res://Resources/Wave Data/Wave 5.tres" id="7_iwp11"]
 
 [resource]
 script = ExtResource("1_3yf7h")
-wave_datas = Array[ExtResource("2_dhmt0")]([ExtResource("3_dhmt0"), ExtResource("3_dhmt0")])
+wave_datas = Array[ExtResource("2_dhmt0")]([ExtResource("3_dhmt0"), ExtResource("4_nw3jd"), ExtResource("5_bbreg"), ExtResource("6_hvh7v"), ExtResource("7_iwp11")])
 metadata/_custom_type_script = "uid://cncbc1rh3of0k"

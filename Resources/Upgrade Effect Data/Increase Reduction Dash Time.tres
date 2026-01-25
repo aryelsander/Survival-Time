@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_7t6hc")
-value = 1.0
+value = 0.3
 upgrade_id = "increase_reduction_dash_time"
 max_level = 10
 cost = 30.0

@@ -15,7 +15,14 @@ func _ready() -> void:
 	settings_button.pressed.connect(_on_settings)
 	back_to_upgrade_button.pressed.connect(_on_back_to_upgrade)	
 	back_to_main_menu.pressed.connect(_on_back_main_menu)
-	
+	options_menu.close.connect(try)
+	call_deferred("configure_back_button")
+func try() ->void:
+	settings_button.grab_focus()
+	visible = true
+
+func configure_back_button() -> void:
+	options_menu.back_button.pressed.connect(try)
 
 func _on_continue() -> void:
 	game_scene.process_mode = Node.PROCESS_MODE_INHERIT
@@ -23,6 +30,8 @@ func _on_continue() -> void:
 
 func _on_settings() -> void:
 	options_menu.visible = true
+	options_menu.option_button.grab_focus()
+	visible = false
 	pass
 
 func _on_back_to_upgrade() -> void:

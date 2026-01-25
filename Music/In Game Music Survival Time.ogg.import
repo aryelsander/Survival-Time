@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bxwr5etj3xite"
+path="res://.godot/imported/In Game Music Survival Time.ogg-e9e11702578dc0f194f69aebccdaeb88.oggvorbisstr"
+
+[deps]
+
+source_file="res://Music/In Game Music Survival Time.ogg"
+dest_files=["res://.godot/imported/In Game Music Survival Time.ogg-e9e11702578dc0f194f69aebccdaeb88.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

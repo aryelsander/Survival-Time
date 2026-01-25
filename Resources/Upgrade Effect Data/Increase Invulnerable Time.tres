@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_5x616")
+upgrade_name = "Invulnerable Time"
 value = 0.15
 upgrade_id = "increase_invulnerable_time"
 max_level = 10

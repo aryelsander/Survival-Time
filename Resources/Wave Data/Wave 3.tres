@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="WaveData" load_steps=5 format=3 uid="uid://cjb8ih36tr8c"]
+
+[ext_resource type="PackedScene" uid="uid://dat6ogkwso05j" path="res://Scenes/Enemy/Follower Enemy/follower_enemy.tscn" id="1_83mne"]
+[ext_resource type="Script" uid="uid://bbk81aukhacib" path="res://Scenes/Stage/Game Scene/Managers/Spawn Manager/wave_data.gd" id="1_wa1bl"]
+[ext_resource type="PackedScene" uid="uid://1ul327s6rguk" path="res://Scenes/Enemy/Shooter Enemy/shooter_enemy.tscn" id="2_g44mc"]
+[ext_resource type="PackedScene" uid="uid://cn4piaorowspf" path="res://Scenes/Enemy/SprinterEnemy/sprinter_enemy.tscn" id="3_p2he2"]
+
+[resource]
+script = ExtResource("1_wa1bl")
+wave_time = 60.0
+spawn_time = 1.8
+enemies = Array[PackedScene]([ExtResource("1_83mne"), ExtResource("2_g44mc"), ExtResource("3_p2he2")])
+metadata/_custom_type_script = "uid://bbk81aukhacib"

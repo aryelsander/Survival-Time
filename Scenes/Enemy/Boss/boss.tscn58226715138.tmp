@@ -1,0 +1,36 @@
+[gd_scene load_steps=9 format=3 uid="uid://clsuici4e3feo"]
+
+[ext_resource type="Script" uid="uid://dda3r56fstcgj" path="res://Scenes/Stage/Game Scene/boss.gd" id="1_khj6j"]
+[ext_resource type="PackedScene" uid="uid://necn243bmpxx" path="res://Scenes/Bullet/Physical Bullet/physical_bullet.tscn" id="2_fevsl"]
+[ext_resource type="Resource" uid="uid://dvoibx8tek078" path="res://Resources/Unity Type/Enemy.tres" id="2_o0b5g"]
+[ext_resource type="Resource" uid="uid://cp061fnkvnjtc" path="res://Resources/Enemy Data/Boss Data.tres" id="3_fevsl"]
+[ext_resource type="Resource" uid="uid://cuavrjvohel75" path="res://Resources/Unity Type/Player.tres" id="3_ngdcq"]
+[ext_resource type="Texture2D" uid="uid://cttu20mljkoty" path="res://Sprites/Boss.png" id="4_ngdcq"]
+[ext_resource type="Script" uid="uid://bqguc4lmxea1i" path="res://Addon/Global Timer/global_timer.gd" id="5_o0b5g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uysir"]
+size = Vector2(224, 220)
+
+[node name="Boss" type="Area2D"]
+script = ExtResource("1_khj6j")
+bullet = ExtResource("2_fevsl")
+target_type = ExtResource("3_ngdcq")
+unit_type = ExtResource("2_o0b5g")
+enemy_data = ExtResource("3_fevsl")
+blink_color = Color(18.892157, 18.892157, 18.892157, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_uysir")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("4_ngdcq")
+
+[node name="ActionTimer" type="Node" parent="."]
+script = ExtResource("5_o0b5g")
+wait_time = 10.0
+metadata/_custom_type_script = "uid://bqguc4lmxea1i"
+
+[node name="RefreshTimer" type="Node" parent="."]
+script = ExtResource("5_o0b5g")
+wait_time = 3.0
+metadata/_custom_type_script = "uid://bqguc4lmxea1i"
